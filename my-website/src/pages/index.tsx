@@ -20,7 +20,10 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-              在Windows,Mac,Linux安装
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src='img/download.svg' alt="Install" style={{ marginRight: '12px', width: '22px', height: '22px' }}/>
+              <span>在Windows,Mac,Linux安装</span>
+            </div>
           </Link>
         </div>
       </div>

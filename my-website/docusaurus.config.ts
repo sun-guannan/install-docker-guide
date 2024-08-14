@@ -70,12 +70,7 @@ const config: Config = {
           position: 'left',
           label: '教程',
         },
-        {to: '/blog', label: '常见问题', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
+        {to: '/blog', label: '常见问题', position: 'left'}
       ],
     },
     footer: {
@@ -118,6 +113,11 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
   } satisfies Preset.ThemeConfig,
 };
