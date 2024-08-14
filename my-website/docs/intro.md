@@ -1,47 +1,40 @@
 ---
 sidebar_position: 1
 ---
+import Link from '@docusaurus/Link';
 
-# Tutorial Intro
+# 概述
 
-Let's discover **Docusaurus in less than 5 minutes**.
+不需要昂贵的GPU，现在在本地跑大模型，最简单的方法是使用软件**ollama**，不管是在mac，linux还是windows上，你都可以用ollama去跑各种各样的大模型。但是ollama是一个纯命令行的工具，交互太过原始，再搭配**Open WebUI**可以轻松获取交互界面。如果还想进一步定制，还可以使用**AnythingLLM**实现简单的本地RAG数据库，创建一个完全属于私人的AI小助手
 
-## Getting Started
+:::tip 教程内容
 
-Get started by **creating a new site**.
+Ollama+Open WebUI+AnythingLLM
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+:::
 
-### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+export const PlatformButton = ({text, subtitle, to}) => (
+  <Link
+      to={to}
+      style={{
+        display: 'inline-block',
+        marginTop: '20px',
+        width: '100vh',
+        height: '80px',
+        backgroundColor: '#FEFEFE',
+        color: 'black',
+        borderRadius: '5px',
+        textAlign: 'center',
+        border: '1px solid black',
+        textDecoration: 'none',
+      }}
+    >
+    {text}
+  </Link>
+);
 
-## Generate a new site
+<PlatformButton text='在windows上安装' subtitle='支持apple和intel芯片，快速在本地安装' to='./install/install-windows'/>
+<PlatformButton text='在mac上安装' subtitle='支持apple和intel芯片，快速在本地安装' to='./install/install-mac'/>
+<PlatformButton text='在linux上安装' subtitle='支持apple和intel芯片，快速在本地安装' to='./install/install-linux'/>
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
