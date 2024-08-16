@@ -17,18 +17,6 @@ sidebar_position: 3
 
 通过下面的链接下载anythingLLM安装包：
 
-<Tabs>
-  <TabItem value="intel" label="intel芯片">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-        <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载anythingLLM</InstallButton>
-      </div>
-  </TabItem>
-  <TabItem value="mac" label="apple芯片">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-        <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载anythingLLM</InstallButton>
-      </div>
-  </TabItem>
-</Tabs>
 
 下载完毕后就像其他软件一样双击安装即可。
 
