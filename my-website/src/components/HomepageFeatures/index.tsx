@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        不需要昂贵的CPU,最低只需要4GB内存即可运行
+        不需要昂贵的CPU,最低只需要8GB内存即可运行
       </>
     ),
   },
