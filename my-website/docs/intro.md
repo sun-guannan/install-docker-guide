@@ -62,18 +62,19 @@ export const PlatformButton = ({ icon, title, subtitle, to }) => (
 );
 
 <PlatformButton
+  icon="/img/windows_48.svg"
+  title="在Windows上安装"
+  subtitle="支持win10以上系统，最少需要8GB内存."
+  to="./install/install-windows"
+/>
+
+<PlatformButton
   icon="/img/apple_48.svg"
   title="在Mac上安装"
   subtitle="支持apple和intel芯片."
   to="./install/install-windows"
 />
 
-<PlatformButton
-  icon="/img/windows_48.svg"
-  title="在Windows上安装"
-  subtitle="支持win10以上系统，最少需要8GB内存."
-  to="./install/install-mac"
-/>
 
 <PlatformButton
   icon="/img/linux_48.svg"
