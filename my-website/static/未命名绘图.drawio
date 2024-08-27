@@ -37,6 +37,15 @@
         <mxCell id="6i6t7Rb_xnvpxsrI3Ybj-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6i6t7Rb_xnvpxsrI3Ybj-1" target="6i6t7Rb_xnvpxsrI3Ybj-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="6i6t7Rb_xnvpxsrI3Ybj-12" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="280" y="210" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6i6t7Rb_xnvpxsrI3Ybj-13" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="450" y="310" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6i6t7Rb_xnvpxsrI3Ybj-14" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="470" y="210" width="20" height="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
