@@ -235,7 +235,7 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
 :::info 🚩🚩🚩 现在就可以在终端里与大模型进行交互了 ⏬⏬⏬⏬
 :::
 
-<video controls width='800' src="/video/ollama-run-qwen-demo.mp4" title="ollama run qwen2的运行视频"/>
+<video controls width='600' src="/video/ollama-run-qwen-demo.mp4" title="ollama run qwen2的运行视频"/>
 
 你也可以在ollama的官网里找到它支持的其他模型⏬⏬⏬
 
@@ -434,7 +434,7 @@ a09512f358ee3c497543b3103878b1f06c89d0c956ba542baf58fb2e067f4727
 至此，你已经成功安装了open webui的镜像🎉🎉🎉，让我们执行 `curl http://127.0.0.1:3000` 可以看到页面的一些内容，如果这个服务器部署在内网或者外网，可以访问的话，就可以用客户机访问看看👀
 
 <div class="center">
-  <video controls width='800' src="/video/open-webui-demo.mp4" title="open webui的运行视频"/>
+  <video controls width='600' src="/video/open-webui-demo.mp4" title="open webui的运行视频"/>
 </div>
 
 这个Web UI除了具备基本的聊天功能之外，还包含了RAG能力，不管你是网页还是文档，都可以作为参考资料给到大模型，你如果想让大模型读取网页的话，那在链接前面加个‘#’号就行
