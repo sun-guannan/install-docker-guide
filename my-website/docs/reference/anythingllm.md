@@ -51,12 +51,12 @@ export const InstallButton = ({ to, children }) => (
 
 :::tip 提示
 
-AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模型或者公开模型的API，提供RAG服务API，但是他不提供像OpenWebUI那样的服务器页面。如果你最终需要在局域网内搭建私域的AI助手，还要参考： [如何搭建内网AI助手](./my-website/docs/reference/ollama-openwebui-private-server.md)
+AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模型或者公开模型的API，提供RAG服务API，但是他不提供像OpenWebUI那样的服务器页面。如果你最终需要在局域网内搭建私域的AI助手，还要参考： [如何搭建内网AI助手](./ollama-openwebui-private-server.md)
 :::
 
 :::danger 对于Linux系统而言
 
-先安装Docker，如果没有安装，可以参考: [在Linux上安装Docker](/my-website/docs/install/install-linux.md#2安装docker)
+先安装Docker，如果没有安装，可以参考: [在Linux上安装Docker](../install/install-linux.md)
 
 :::
 
