@@ -15,7 +15,7 @@ Open WebUI 是一个可扩展的、功能丰富且用户友好的自托管 WebUI
 - 隐私和数据安全： 您的所有数据（包括登录信息）都存储在本地设备上，以增强隐私和安全性。
 :::
 
-推荐使用 Docker 🐳 快速启动，具体启动方式，可以参考[在linux上安装Docker](/my-website/docs/install/install-linux.md#2安装docker)
+推荐使用 Docker 🐳 快速启动，具体启动方式，可以参考[在linux上安装Docker](../install/install-linux.md#2安装docker)
 
 :::danger 注意
 使用 Docker 安装 Open WebUI 时，请确保在 Docker 命令中包含 `-v open-webui:/app/backend/data`。此步骤至关重要，因为它确保数据库正确挂载，防止数据丢失。
