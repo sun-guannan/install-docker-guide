@@ -70,7 +70,21 @@ const config: Config = {
           position: 'left',
           label: '教程',
         },
-        {to: '/blog', label: '常见问题', position: 'left'}
+        {
+          to: '/faq', 
+          label: '常见问题', 
+          position: 'left'
+        },
+        {
+          to: '/blog', 
+          label: '最新消息', 
+          position: 'left'
+        },
+        {
+          to: '/aboutus', 
+          label: '关于我们', 
+          position: 'left'
+        },
       ],
     },
     footer: {
