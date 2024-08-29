@@ -10,6 +10,12 @@
   overflow: hidden;
 }
 
+.hero--custom {
+  background-color: #00ee00; /* 自定义背景颜色 */
+  color: #333333; /* 自定义文字颜色 */
+  padding: 2rem 0;
+}
+
 .container {
   margin: 10rem;
 }
