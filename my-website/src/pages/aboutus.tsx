@@ -15,7 +15,7 @@ function HomepageHeader() {
     style={{ backgroundColor: '#1877F2', color: '#ffffff' }}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          AI小创客
+          AI小店
         </Heading>
         <p className="hero__subtitle">我们专注于提供顶尖的AI私有化部署解决方案，无需互联网，您的数据始终安全可靠。</p>
         <div className={styles.buttons}>

@@ -22,7 +22,7 @@ function HomepageHeader() {
             to="/docs/intro">
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src='img/download.svg' alt="Install" style={{ marginRight: '12px', width: '22px', height: '22px' }}/>
-              <span>在Windows,Mac,Linux安装</span>
+              <span>立即开始私有部署⚡️</span>
             </div>
           </Link>
         </div>
