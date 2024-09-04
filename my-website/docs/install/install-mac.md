@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
-# Mac
+# Mac 安装指南
 
 export const InstallButton = ({ to, children }) => (
   <Link
