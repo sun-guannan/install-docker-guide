@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'AI小店',
+  title: '智AI小铺',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -58,7 +58,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'AI小店',
+      title: '智AI小铺',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -122,7 +122,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} AI小店版权所有.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 智AI小铺版权所有.`,
     },
     prism: {
       theme: prismThemes.github,
