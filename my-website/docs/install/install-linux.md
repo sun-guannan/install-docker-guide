@@ -48,11 +48,17 @@ export const InstallButton = ({ to, children }) => (
 
 :::danger   🔥 联系我们 🔥
  
-欢迎来淘宝店联系我们的客服
-- 获取网盘提取密码
-- 寻求人工指导
+有问题？欢迎来淘宝店联系我们的 [客服](https://item.taobao.com/item.htm?ft=t&id=831508489260) 💬
+
+- 获取网盘提取密码 🔑
+- 寻求人工指导 👩‍💻👨‍💻
 
 :::
+
+
+完整的安装视频🎦：
+<video controls width='600' src="/video/linux-install-all-step.mp4" title="完整的安装视频"/>
+
 
 ## 1. 安装 Ollama
 
@@ -259,14 +265,14 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
 
 🐳🐳🐳 不过想要安装Open WebUI，我们需要先安装Docker，简化我们的配置和安装环节。
 
-### 2.1 卸载旧版本
+### 2.1 卸载旧版本 🧹
 
 运行以下命令卸载所有冲突的软件包：
 ```bash
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
-### 2.2 下载Docker Engine
+### 2.2 下载Docker Engine 🚀
 
 下面提供了针对ubuntu-22.04-x86_64版本的docker engine安装包，如果需要其他版本或者芯片类型的安装包，可以联系我们
 <Tabs>
@@ -305,7 +311,7 @@ Docker version 20.10.8, build 3967b7d
 
 下一步就是安装open-webui的镜像并运行
 
-## 3. 安装Open Webui
+## 3. 安装Open Webui 🌐
 
 ### 3.1 下载 Open Webui 的镜像
 
@@ -319,25 +325,20 @@ Docker version 20.10.8, build 3967b7d
 
 ### 3.2 加载镜像
 
-- 打开一个终端窗口，输入指令进入到下载目录，例如
-
-``` bash
-cd ~/Download/docker-images-openwebui-tar
-```
-
+- 打开一个终端窗口
 - 执行`ls`，确保文件夹里包含镜像文件，你应该看到
 ``` bash
-docker-images-tar.zip
+docker-images-openwebui-tar.zip
 ```
 - 执行下面的命令解压缩镜像文件
 ```bash
-unzip docker-images-tar.zip
+unzip docker-images-openwebui-tar.zip
 tar -xzvf x86-64-images.tar.gz
 ```
 
 - 执行`ls`，确保文件里包含解压缩之后的镜像，他应该是`.tar`后缀的，例如
 ``` bash
-ghcr.io_open--webui_open-webui/main-amd64.tar
+ghcr.io_open--webui_open-webui:main-amd64.tar
 ```
 
 - 使用docker加载镜像，执行`sudo docker load -i ghcr.io_open--webui_open-webui\:main-amd64.tar`，你应该可以看到docker开始加载镜像，例如：
