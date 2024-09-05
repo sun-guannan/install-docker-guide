@@ -54,6 +54,9 @@ export const InstallButton = ({ to, children }) => (
 
 :::
 
+完整的安装视频🎦：
+<video controls width='600' src="/video/mac-install-all-step.mp4" title="完整的安装视频"/>
+
 ## 1. 安装ollama
 
 <img src='/img/ollama.png' style={{width:'40px', height:'60px', marginRight:'12px'}}/>ollama可以帮助我们非常方便的获取和运行大模型。
