@@ -104,11 +104,7 @@ const config: Config = {
           items: [
             {
               label: '淘宝店铺',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: '抖音店铺',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://item.taobao.com/item.htm?ft=t&id=831508489260',
             }
           ],
         },

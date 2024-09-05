@@ -54,8 +54,8 @@ export const InstallButton = ({ to, children }) => (
 :::
 
 :::danger   🔥 联系我们 🔥
-
-有问题？欢迎来淘宝店联系我们的客服 💬
+ 
+有问题？欢迎来淘宝店联系我们的 [客服](https://item.taobao.com/item.htm?ft=t&id=831508489260) 💬
 
 - 获取网盘提取密码 🔑
 - 寻求人工指导 👩‍💻👨‍💻
