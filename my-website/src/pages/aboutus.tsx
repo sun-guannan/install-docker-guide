@@ -21,7 +21,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="https://item.taobao.com/item.htm?ft=t&id=831508489260">
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src='img/logo.svg' alt="Install" style={{ marginRight: '12px', width: '22px', height: '22px' }}/>
               <span>联系我们</span>

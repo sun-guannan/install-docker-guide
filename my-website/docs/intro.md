@@ -14,7 +14,7 @@ import Link from '@docusaurus/Link';
 
 🤔️数据不能外漏，不放心使用公开大模型？
 
-## 本地部署教程⚡️⚡️⚡️
+## ⚡️⚡️⚡️ 本地部署AI大模型教程 ⚡️⚡️⚡️
 
 不需要昂贵的GPU，在本地就能部署大模型🚀🚀🚀。
 
@@ -72,7 +72,7 @@ export const PlatformButton = ({ icon, title, subtitle, to }) => (
   icon="/img/apple_48.svg"
   title="在Mac上安装"
   subtitle="支持apple和intel芯片."
-  to="./install/install-windows"
+  to="./install/install-mac"
 />
 
 
