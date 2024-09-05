@@ -37,12 +37,12 @@ export const InstallButton = ({ to, children }) => (
 );
 
 
-本教程将会介绍如何在Linux上安装ollama, open webui 以及anythingLLM.
+欢迎来到《Linux 安装指南》！🚀 在这里，你将学会如何在 Linux 上安装 **Ollama** 、 **Open WebUI** 以及 **AnythingLLM** 。让我们开始吧！🎉
 
 :::info   ⚡️⚡️⚡️ 系统要求 ⚡️⚡️⚡️
 
 - 最少8GB内存
-- 请确保防火墙的兼容性，可能会使用的端口号有3000,11434
+- 请确保防火墙的兼容性，可能会使用的端口号有3000, 11434
 
 :::
 
@@ -54,18 +54,18 @@ export const InstallButton = ({ to, children }) => (
 
 :::
 
-## 1. 安装ollama
+## 1. 安装 Ollama
 
 <img src='/img/ollama.png' style={{width:'40px', height:'60px', marginRight:'12px'}}/>ollama可以帮助我们非常方便的获取和运行大模型。
 
 
-安装ollama非常简单，可以按照以下步骤进行：
+安装 Ollama 非常简单，可以按照以下步骤进行：
 
-### 1.1 安装 ollama
+### 1.1 安装 Ollama
 
 通过运行以下单行命令来安装Ollama：
 
-``` bash
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
@@ -74,26 +74,26 @@ curl -fsSL https://ollama.com/install.sh | sh
   
   如果遇到不能下载的问题，就要稍微麻烦一些。
 
-  **1. 首先你需要手动下载ollama**
+  **1. 手动下载ollama**
 
   <Tabs>
-    <TabItem value="ollama-linux" label="ollama">
+    <TabItem value="ollama-linux-x86" label="x86_64">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://pan.baidu.com/s/1SWaqWoJs7udxk-2_zkhQWw">下载ollama</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/1h0JlkT9pDUCc9FafxwhaBQ">下载 Ollama</InstallButton>
         </div>
     </TabItem>
   </Tabs>
 
   下载完成后，添加执行权限：
   ```bash
-  chmod +x ollama-linux-arm64
+  chmod +x ollama-linux-amd64
   ```
 
   移动文件到系统路径
   ```bash
-  sudo mv ollama-linux-arm64 /usr/bin/ollama
+  sudo mv ollama-linux-amd64 /usr/bin/ollama
   ```
-  这时候执行`ollama`可以验证是否安装，你应该可以看到：
+  这时候执行 `ollama` 可以验证是否安装，你应该可以看到：
   ```bash
   Usage:
   ollama [flags]
@@ -119,9 +119,9 @@ curl -fsSL https://ollama.com/install.sh | sh
   Use "ollama [command] --help" for more information about a command.
   ```
 
-  **2. 将Ollama添加为启动服务**
+  **2. 将 Ollama 添加为启动服务**
   
-  创建一个Ollama用户:
+  创建一个 Ollama 用户:
   
   ```bash
   sudo useradd -r -s /bin/false -m -d /usr/share/ollama ollama
@@ -158,7 +158,7 @@ curl -fsSL https://ollama.com/install.sh | sh
   <Tabs>
     <TabItem value="install-driver" label="安装GPU驱动">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">➡️淘宝店铺⬅️</InstallButton>
+          <InstallButton to="https://item.taobao.com/item.htm?ft=t&id=831508489260">➡️淘宝店铺⬅️</InstallButton>
         </div>
     </TabItem>
   </Tabs>
@@ -173,12 +173,12 @@ curl -fsSL https://ollama.com/install.sh | sh
 </details>
 
 ### 1.2 安装模型
-- 启动一个终端窗口，输入以下命令来安装qwen:7b模型
-``` bash
+- 启动一个终端窗口，输入以下命令来安装 **qwen:7b** 模型
+```bash
 ollama run qwen2
 ```
 - 顺利的话，你应该可以从ollama的仓库里直接获取模型并安装。例如:
-``` bash
+```bash
 pulling manifest
 pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m21s
 ```
@@ -195,12 +195,12 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
   <Tabs>
     <TabItem value="qwen7b" label="qwen:7b">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载qwen:7b模型</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/10MgXJTzzCW_jcD3DpMwzJQ">下载 qwen:7b 模型</InstallButton>
         </div>
     </TabItem>
     <TabItem value="more" label="更多模型">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">➡️淘宝店铺⬅️</InstallButton>
+          <InstallButton to="https://item.taobao.com/item.htm?ft=t&id=831508489260">➡️淘宝店铺⬅️</InstallButton>
         </div>
     </TabItem>
   </Tabs>
@@ -247,11 +247,11 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
 在这个列表里，你可以针对你的机器的内存大小，选择对应的版本，然后复制后面这一条命令就ok，一般来说7b的模型至少需要8G的内存，13b需要16G，70B需要64G内存，大家量力而行，不要过分选择太大的模型，不然跑起来真的非常慢。
 :::
 
-这样，你就成功的在MacOS上安装并配置好了Ollama🎉🎉🎉
+这样，你就成功的在Linux上安装并配置好了Ollama🎉🎉🎉
 
 由于模型完全运行在本地，可以在断网的情况下运行，完全不担心数据泄漏的风险👍。
 
-## 2.安装docker
+## 2. 安装 Docker 🐳
 
 ⚡️⚡️⚡️ 我们显然不满足仅仅使用命令行交互，这实在太原始了，我们还是想要有更现代，更好用的交互界面。
 
@@ -270,9 +270,9 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 
 下面提供了针对ubuntu-22.04-x86_64版本的docker engine安装包，如果需要其他版本或者芯片类型的安装包，可以联系我们
 <Tabs>
-  <TabItem value="ubuntu" label="ubuntu-22.04-tls">
+  <TabItem value="ubuntu" label="ubuntu-22.04-x86_64">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-        <InstallButton to="https://pan.baidu.com/s/1QuW5Wqk0OrwBKWtQXZC8_w">下载docker engine</InstallButton>
+        <InstallButton to="https://pan.baidu.com/s/1UpNzWjIYOB_lW-09dIMRkQ">下载docker engine</InstallButton>
       </div>
   </TabItem>
   <TabItem value="more" label="更多版本">
@@ -305,14 +305,14 @@ Docker version 20.10.8, build 3967b7d
 
 下一步就是安装open-webui的镜像并运行
 
-## 3.安装open webui
+## 3. 安装Open Webui
 
-### 3.1 下载open webui的镜像
+### 3.1 下载 Open Webui 的镜像
 
 <Tabs>
-  <TabItem value="openwebui" label="open-webui镜像">
+  <TabItem value="openwebui" label="Open WebUI 镜像">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-        <InstallButton to="https://pan.baidu.com/s/1cWxI4ZMB0tIgvbh1F9fGlg">下载open-webui镜像</InstallButton>
+        <InstallButton to="https://pan.baidu.com/s/1Zd0QrMCjcr07lLqT3B92Ng">下载 Open WebUI 镜像</InstallButton>
       </div>
   </TabItem>
 </Tabs>
@@ -365,7 +365,7 @@ Loaded image: ghcr.io/open-webui/open-webui:main
 ### 3.3 运行镜像
 
 继续在终端中输入：
-``` bash
+```bash
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
 
@@ -425,7 +425,7 @@ always 表示无论容器为何退出，Docker 都会自动重启它。这对于
 
 你应该会看到：
 
-``` bash
+```bash
 % docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 
 a09512f358ee3c497543b3103878b1f06c89d0c956ba542baf58fb2e067f4727
@@ -437,8 +437,14 @@ a09512f358ee3c497543b3103878b1f06c89d0c956ba542baf58fb2e067f4727
   <video controls width='600' src="/video/open-webui-demo.mp4" title="open webui的运行视频"/>
 </div>
 
-这个Web UI除了具备基本的聊天功能之外，还包含了RAG能力，不管你是网页还是文档，都可以作为参考资料给到大模型，你如果想让大模型读取网页的话，那在链接前面加个‘#’号就行
+这个**Open WebUI** 除了具备基本的聊天功能之外，还 **RAG**（检索增强生成）能力，不管你是网页还是文档，都可以作为参考资料给到大模型，你如果想让大模型读取网页的话，那在链接前面加个‘#’号就行
 
 你如果想让大模型读取文档的话，可以在对话框的位置倒入，在对话框页面输入`#`就会出现已经导入的所有文档，你可以选择一个，或者干脆让大模型把所有文档都作为参考资料.
 
-如果你的要求不太高，那做到这一步就OK了，如果你对知识库想有更多的掌控的话，那再去下载anythingLLM，去做更多进阶的操作。如果你想将ollama设置为服务器模式，在内网搭建AI助手的服务器，那再去看➡️➡️➡️这份指南。
+如果你的要求不太高，那做到这一步就OK了，如果你对知识库想有更多的掌控的话，那再去下载anythingLLM，去做更多进阶的操作:
+
+ - [使用AnythingLLM配置本地数据库](../reference/anythingllm.md)
+
+如果你想将ollama设置为服务器模式，在内网搭建AI助手的服务器，那再去看这份指南:
+
+ - [在内网搭建AI机器人助手](../reference/ollama-openwebui-private-server.md)
