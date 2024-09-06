@@ -95,7 +95,7 @@ const config: Config = {
           items: [
             {
               label: '关于我们',
-              to: '/docs/intro',
+              to: '/aboutus',
             },
           ],
         },
