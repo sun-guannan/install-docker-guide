@@ -82,7 +82,7 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
     </TabItem>
     <TabItem value="linux-terminal" label="Linux终端">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://pan.baidu.com/s/14nR7vb_64SEADuAH7ZioWQ">下载Linux Docker镜像</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/14nR7vb_64SEADuAH7ZioWQ">下载AnythingLLM Docker镜像</InstallButton>
         </div>
     </TabItem>
     <TabItem value="linux-desktop" label="Linux桌面端">
@@ -168,6 +168,11 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
 
             7. 现在访问`http://localhost:3001`就可以访问AnythingLLM了
           </div>
+        </div>
+    </TabItem>
+    <TabItem value="linux-desktop" label="Linux桌面端">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
+          <div style={{margin:'12px', paddingLeft:'12px'}}>脚本启动：./AnythingLLMDesktop/start</div>
         </div>
     </TabItem>
   </Tabs>
