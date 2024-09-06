@@ -131,7 +131,7 @@ Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linu
   </TabItem>
   <TabItem value="more" label="更多发行版本">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-        <InstallButton to="https://pan.baidu.com/s/1QuW5Wqk0OrwBKWtQXZC8_w">➡️淘宝店铺⬅️</InstallButton>
+        <InstallButton to="https://item.taobao.com/item.htm?ft=t&id=831508489260">➡️淘宝店铺⬅️</InstallButton>
       </div>
   </TabItem>
 </Tabs>
