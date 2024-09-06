@@ -67,22 +67,27 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
   <Tabs>
     <TabItem value="windows" label="Windows">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载Windows桌面端</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/15FU6G-lO0YogWXTTGYsupw">下载Windows桌面端</InstallButton>
         </div>
     </TabItem>
     <TabItem value="mac-intel" label="MacOS Intel芯片">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载MacOS Intel芯片桌面端</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/1TYeVE_n8YMmnHZh5S7UgEg">下载MacOS Intel芯片桌面端</InstallButton>
         </div>
     </TabItem>
     <TabItem value="mac-apple" label="MacOS Apple芯片">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载MacOS Apple芯片桌面端</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/1wg_hUe--ELUL6oOUxYo4pw">下载MacOS Apple芯片桌面端</InstallButton>
         </div>
     </TabItem>
-    <TabItem value="linux" label="Linux">
+    <TabItem value="linux-terminal" label="Linux终端">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://docs.docker.com/desktop/install/mac-install/">下载Linux Docker镜像</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/14nR7vb_64SEADuAH7ZioWQ">下载Linux Docker镜像</InstallButton>
+        </div>
+    </TabItem>
+    <TabItem value="linux-desktop" label="Linux桌面端">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
+          <div style={{margin:'12px', paddingLeft:'12px'}}>一键安装脚本：curl -fsSL https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/installer.sh | sh</div>
         </div>
     </TabItem>
   </Tabs>
@@ -92,52 +97,47 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
   <Tabs>
     <TabItem value="windows" label="Windows">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装即可</div>
+          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装程序，按照屏幕提示完成安装。</div>
         </div>
     </TabItem>
     <TabItem value="mac-intel" label="MacOS Intel芯片">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装即可</div>
+          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装程序，按照屏幕提示完成安装。</div>
         </div>
     </TabItem>
     <TabItem value="mac-apple" label="MacOS Apple芯片">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装即可</div>
+          <div style={{margin:'12px', paddingLeft:'12px'}}>双击安装程序，按照屏幕提示完成安装。</div>
         </div>
     </TabItem>
-    <TabItem value="linux" label="Linux">
+    <TabItem value="linux-terminal" label="Linux终端">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
           <div style={{margin:'12px', paddingLeft:'12px'}}>
             
-            1.打开一个终端窗口，输入指令进入到下载目录，例如
-
-            ```bash
-            cd ~/Download/docker-images-openwebui-tar
-            ```
-
+            1.打开一个终端窗口，输入指令进入到下载目录
             2.执行ls，确保文件夹里包含镜像文件，你应该看到
 
             ```bash
-            docker-images-tar.zip
+            docker-images-anythingllm-tar.zip
             ```
 
             3.执行下面的命令解压缩镜像文件
 
             ```bash
-            unzip docker-images-tar.zip
+            unzip docker-images-anythingllm-tar.zip
             tar -xzvf x86-64-images.tar.gz
             ```
 
             4.执行ls，确保文件里包含解压缩之后的镜像，他应该是.tar后缀的，例如
 
             ```bash
-            ghcr.io_open--webui_open-webui/main-amd64.tar
+            mintplexlabs_anythingllm-amd64.tar
             ```
 
             5.使用docker加载镜像，执行
 
             ```bash
-            sudo docker load -i ghcr.io_open--webui_open-webui\:main-amd64.tar
+            sudo docker load -i mintplexlabs_anythingllm-amd64.tar
             ```
 
             你应该可以看到docker开始加载镜像，例如：
@@ -147,7 +147,7 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
             8f8901bf8c60: Loading layer  9.539MB/9.539MB
             5e4b20e815a6: Loading layer  35.33MB/35.33MB
             8faf1c09f36d: Loading layer  4.608kB/4.608kB
-            Loaded image: ghcr.io/open-webui/open-webui:main
+            Loaded image: mintplexlabs/anythingllm:latest
             ```
 
             这样，你就成功将open webui的镜像加载进了docker容器中
@@ -158,7 +158,7 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
             export STORAGE_LOCATION=$HOME/anythingllm && \
             mkdir -p $STORAGE_LOCATION && \
             touch "$STORAGE_LOCATION/.env" && \
-            docker run -d -p 3001:3001 \
+            sudo docker run -d -p 3001:3001 \
             --cap-add SYS_ADMIN \
             -v ${STORAGE_LOCATION}:/app/server/storage \
             -v ${STORAGE_LOCATION}/.env:/app/server/.env \
@@ -177,18 +177,18 @@ AnythingLLM是一个桌面软件，他可以简化RAG工作流，使用本地模
 
 1. 安装完成之后，打开anythingLLM，点击左下角的设置
 2. 然后在LLM Preference里打开ollama，如果你的ollama已经在运行状态，可以看到他在监听默认的11434端口，这里保持默认不去修改，设置好模型和最大token后记得保存。
-3. 然后选择Embedding Model，依然选择Ollama，这里的向量模型选择nomic，这里的最大chunk lengh设置为512，一般设置在256～512之间，表示文本被划分的颗粒度。
+3. 然后选择Embedding Model，依然选择Ollama，这里的向量模型选择nomic，这里的chunk length 是将文档分块的长度，通常设置为 256-512 个字符。设置过大会导致模型处理效率降低，设置过小则可能导致上下文丢失。
 4. 接下来我们选择vector database，可以选择默认的lanceDB作为向量数据库。
 
 <video controls width='600' src="/video/config-anythingllm.mp4" title="设置向量数据库"/>
 
 ## 5.AnythingLLM的原理
 
-
 我们来捋一下原理，当你想要和文档进行对话，
-1. 第一步你需要创建向量数据库。将你的文档上传至anythingLLM
-2. 然后anythingLLM会调用nomic将这些文件进行向量化
-3. 向量转化之后的数据会被存放进lanceDB或者其他你配置的向量数据库中。
+1. **创建向量数据库**：首先，你需要上传文档至 AnythingLLM。系统会将文档内容向量化（即将文本转为模型可理解的数值表示）。
+2. **存储向量数据**：向量化的数据将被存储到 LanceDB 等向量数据库中。
+3. **结合搜索与大模型回答**：每当用户提问时，系统会先从向量数据库中搜索相关文档段落，然后将其作为上下文提交给大模型进行回答。
+
 
 <div class="center">
   <img src='/img/anythingLLM-proto.png' style={{width:'603px', height:'267px', marginRight:'12px'}}/>
