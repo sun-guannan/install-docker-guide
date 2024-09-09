@@ -3828,4 +3828,4 @@ if __name__ == '__main__':
     main()
 ```
 
-然后执行：`python3 convert_hf_to_gguf.py your/model/folder/`，就会在`your/model/folder`文件夹下生成`.gguf`和`Modelfile`文件
+然后执行：`python3 convert_hf_to_gguf.py your/model/folder/`，就会在`your/model/folder`文件夹下生成`.gguf`文件
