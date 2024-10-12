@@ -53,7 +53,7 @@ export const InstallButton = ({ to, children }) => (
 - M系列芯片
 
 ### 客服代练
-- 没有合适的电脑？🤔️，不明白这些复杂的配置？🤔️，欢迎来淘宝店联系我们，提供代练，代制作AI配音服务。TODO:替换成新商品的客服联系方式的 [客服](https://item.taobao.com/item.htm?ft=t&id=831508489260) 💬
+- 没有合适的电脑？🤔️，不明白这些复杂的配置？🤔️，欢迎来淘宝店联系我们，提供代练，代制作AI配音服务。[客服](https://item.taobao.com/item.htm?ft=t&id=831508489260) 💬
 :::
 
 
@@ -198,10 +198,13 @@ export const InstallButton = ({ to, children }) => (
 
 进入推理界面。
 
-<img src='/img/interferrence.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
+<img src='/img/select_model.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
 
 
 先点一下刷新模型，下拉选择模型推理，e代表轮数，s代表步数。不是轮数越高越好。选择好模型点开启TTS推理，自动弹出推理界面。如果没有弹出，复制控制台最下面的链接在浏览器里打开。todo:补充推理界面截图。
+
+
+<img src='/img/interrferrence.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
 
 最上面可以切换模型，选择刚才训练出来的模型即可。然后上传一段参考音频，建议是数据集中的切割音频。最好5秒，并输入字幕。
 

@@ -475,8 +475,53 @@ a09512f358ee3c497543b3103878b1f06c89d0c956ba542baf58fb2e067f4727
 
 如果你的要求不太高，那做到这一步就OK了，如果你对知识库想有更多的掌控的话，那再去下载anythingLLM，去做更多进阶的操作:
 
- - [使用AnythingLLM配置本地数据库](../reference/anythingllm.md)
+ - [使用AnythingLLM配置本地数据库](../../reference/anythingllm.md)
 
 如果你想将ollama设置为服务器模式，在内网搭建AI助手的服务器，那再去看这份指南:
 
- - [在内网搭建AI机器人助手](../reference/ollama-openwebui-private-server.md)
+ - [在内网搭建AI机器人助手](../../reference/ollama-openwebui-private-server.md)
+
+ ## 3. 重启服务
+
+ 重启电脑后，需要重启服务，流程如下：
+
+### 3.1 在 WSL 中，启动 ollama 服务，确保它在本地的 http://127.0.0.1:11434 端口上运行。
+
+启动ubuntu终端，在当前终端窗口中，输入以下命令以启动 Ollama 服务：
+
+```
+ollama serve
+```
+
+此命令将启动 Ollama 服务并在 127.0.0.1:11434 上提供接口。让这个终端保持打开状态以确保服务持续运行。
+
+### 3.2 打开新的终端窗口并启动 Docker 守护进程
+接下来，你需要在 Ubuntu 中启动 Docker 守护进程。由于 WSL 默认不会自动启动 dockerd（Docker 守护进程），你需要手动启动它。
+
+打开另一个 ubuntu终端 窗口，进入 WSL Ubuntu 环境：
+
+```
+sudo dockerd
+```
+
+这会启动 Docker 守护进程，你需要让这个窗口保持打开状态，以保持 Docker 守护进程的持续运行。
+
+### 3.3 运行 Open Web UI 的 Docker 容器
+现在 Docker 守护进程已经启动，你可以运行 open-webui 容器。
+
+在 新的终端窗口 中运行以下命令：
+
+```
+docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+
+### 3.4 访问 Open Web UI
+现在 open-webui 容器已经启动，访问 Web UI 以确认其工作正常。
+
+在浏览器中打开以下 URL：
+
+```
+http://127.0.0.1:8080
+```
+
+此时，Open Web UI 应该可以正常访问，你可以通过浏览器查看其界面。
