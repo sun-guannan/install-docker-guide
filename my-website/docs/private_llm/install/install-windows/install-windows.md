@@ -295,7 +295,7 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 
 #### 2.2.2 下载Docker Engine 🚀
 
-下面提供了针对ubuntu-22.04-x86_64版本的docker engine安装包，如果需要其他版本或者芯片类型的安装包，可以联系我们
+下面提供了针对ubuntu-20.04-x86_64版本的docker engine安装包，如果需要其他版本或者芯片类型的安装包，可以联系我们
 <Tabs>
   <TabItem value="ubuntu" label="ubuntu-20.04-x86_64">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
