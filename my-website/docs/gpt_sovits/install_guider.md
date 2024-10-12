@@ -58,7 +58,7 @@ export const InstallButton = ({ to, children }) => (
 - M系列芯片
 
 ### 客服代练
-- 没有合适的电脑？🤔️，不明白这些复杂的配置？🤔️，欢迎来淘宝店联系我们，提供代练，代制作AI配音服务。[客服](https://item.taobao.com/item.htm?ft=t&id=842828151808) 💬
+- 没有合适的电脑？🤔️，不明白这些复杂的配置？🤔️，欢迎来淘宝店联系我们，提供代练，代制作AI配音服务。[客服](https://item.taobao.com/item.htm?id=842828151808) 💬
 :::
 
 
