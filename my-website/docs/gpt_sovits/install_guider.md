@@ -39,6 +39,24 @@ export const InstallButton = ({ to, children }) => (
 
 ## 1. 效果演示
 
+生成视频演示：
+<video controls width='600' src="/video/tts-demo.mp4" title="生成视频演示"/>
+
+效果一：
+<audio controls>
+  <source src="../../static/audio/gpt-sovits-self-voice.wav" type="audio/mpeg"/>
+</audio>
+
+
+效果二：
+<audio controls>
+  <source src="../../static/audio/fish-audio-leijun.mp3" type="audio/mpeg"/>
+</audio>
+
+效果三：
+<audio controls>
+  <source src="../../static/audio/fish-audio-liuyifei.mp3" type="audio/mpeg"/>
+</audio>
 
 :::info   ⚡️⚡️⚡️ 配置要求 ⚡️⚡️⚡️
 
@@ -58,7 +76,9 @@ export const InstallButton = ({ to, children }) => (
 
 
 ## 2. windows安装视频
-<video controls width='600' src="/video/example_gpt_sovits.mp4" title="ollama run qwen2的运行视频"/>
+
+一键包启动后演示界面：
+<video controls width='600' src="/video/example_gpt_sovits.mp4" title="一键包启动后演示界面"/>
 
 ## 3. 图文教程
 ### 3.1 整合包下载
@@ -201,8 +221,7 @@ export const InstallButton = ({ to, children }) => (
 <img src='/img/select_model.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
 
 
-先点一下刷新模型，下拉选择模型推理，e代表轮数，s代表步数。不是轮数越高越好。选择好模型点开启TTS推理，自动弹出推理界面。如果没有弹出，复制控制台最下面的链接在浏览器里打开。todo:补充推理界面截图。
-
+先点一下刷新模型，下拉选择模型推理，e代表轮数，s代表步数。不是轮数越高越好。选择好模型点开启TTS推理，自动弹出推理界面。如果没有弹出，复制控制台最下面的链接在浏览器里打开。
 
 <img src='/img/interrferrence.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
 
@@ -218,6 +237,15 @@ export const InstallButton = ({ to, children }) => (
 
 在要合成的文本输入框里输入想要合成的文案，然后点击“合成语音”就可以啦。
 
+<img src='/img/tts_1.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
+
+
 ### 3.7 使用别人的模型
 将GPT模型（ckpt后缀）放入GPT_weights_v2文件夹，SoVITS模型（pth后缀）放入SoVITS_weights_v2文件夹。双击go-webui.bat打开网页，再进入[3.6文生音频](./install_guider.md#36-文生音频)，刷新下模型就能选择模型推理了。
 <img src='/img/pre_model_folder.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
+
+## 4.常见问题
+
+### Q: 控制台为什么没有往下继续执行？
+
+有的时候会卡住，多回车几次就好了
