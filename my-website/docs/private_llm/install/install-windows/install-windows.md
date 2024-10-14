@@ -90,6 +90,11 @@ Windows Subsystem for Linux (WSL) 是 Windows 的一个功能，它允许你在 
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
+:::danger 保持ollama服务启动
+❗️❗️❗️ 安装好ollama后，在命令行执行：`ollama serve`，
+此命令将启动 Ollama 服务并在 127.0.0.1:11434 上提供接口。让这个终端保持打开状态以确保服务持续运行。
+:::
+
 <details>
   <summary>不能访问网络🤔️？手动安装👏</summary>
   
@@ -193,13 +198,9 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 </details>
 
-:::danger 保持ollama服务启动
-安装好ollama后，在命令行执行：`ollama serve`，
-此命令将启动 Ollama 服务并在 127.0.0.1:11434 上提供接口。让这个终端保持打开状态以确保服务持续运行。
-:::
 
 #### 2.1.2 安装模型
-- 重新启动一个终端窗口，输入以下命令来安装 **qwen:7b** 模型
+- 重新启动一个终端窗口，输入以下命令来安装 **qwen2:7b** 模型
 ```bash
 ollama run qwen2
 ```
@@ -216,12 +217,12 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
 
   **1. 首先你需要手动下载模型**
   
-  下面的链接是已经配置好的qwen7b模型，如果你需要更多其他模型可以联系我们。
+  下面的链接是已经配置好的llama3.1:7b 中文模型，如果你需要更多其他模型可以联系我们。
 
   <Tabs>
-    <TabItem value="qwen7b" label="qwen:7b">
+    <TabItem value="llama31" label="llama3.1 中文微调:7b">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor:'#EFEFEF', paddingTop:'12px', paddingBottom:'12px', borderRadius: '12px' }}>
-          <InstallButton to="https://pan.baidu.com/s/10MgXJTzzCW_jcD3DpMwzJQ">下载 qwen:7b 模型</InstallButton>
+          <InstallButton to="https://pan.baidu.com/s/19AWkchjhRJcpOXsbsk1Ohw">下载 llama3.1中文微调模型</InstallButton>
         </div>
     </TabItem>
     <TabItem value="more" label="更多模型">
@@ -238,22 +239,22 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
   - 打开一个终端窗口，进入刚才下载的目录中，例如：
   
   ``` bash
-  cd ~/Downloads/Qwen2-7B-F16
+  cd ~/Downloads/llama3.1-chinese-F16
   ```
   - 输入执行`ls`，确保文件在该路径中，你应该看到：
   ``` bash
-  Qwen2-7B-F16.gguf     Modelfile
+  llama3.1_8b_chinese_chat_f16.gguf     Modelfile
   ```
   - 创建模型，执行
   ```bash
-    ollama create qwen2 -f Modelfile
+    ollama create llama31 -f Modelfile
   ```
   
-  这里的qwen2是自定义的模型名称，下面运行时还会用到
+  这里的llama31是自定义的模型名称，下面运行时还会用到
 
   - 运行模型，执行
   ```bash
-    ollama run qwen2
+    ollama run llama31
   ```
 
 </details>
@@ -330,15 +331,45 @@ Docker version 20.10.8, build 3967b7d
 
 这样，你就成功的在Linux上安装并配置好了docker👏👏👏
 
-#### 2.2.5 启动docker守护进程
-接下来，你需要在 Ubuntu 中启动 Docker 守护进程。由于 WSL 默认不会自动启动 dockerd（Docker 守护进程），你需要手动启动它。
+#### 2.2.5 添加用户组
+
+在 WSL 环境下使用 `Docker` 时，默认情况下只能使用 `sudo` 命令来运行 Docker 命令。这是因为 Docker 守护进程需要管理员权限，只有在 `docker` 用户组中的用户才能在没有 `sudo` 的情况下使用 Docker 命令。
+
+通过将当前用户添加到 `docker` 用户组，你可以不使用 `sudo` 就能运行 Docker 命令。执行：
+
+```
+sudo usermod -aG docker $USER
+```
+这里的 `$USER` 是环境变量，表示当前登录的用户名。该命令会将当前用户添加到 `docker` 组，从而使用户具有 Docker 命令的权限。
+
+在执行了上面的命令后，需要重新登录 WSL 会话或重新启动 WSL，以使组更改生效。可以使用以下命令重新启动 WSL：
+
+```
+wsl --shutdown
+```
+
+然后再次启动 WSL，即可应用用户组的更改。可以运行以下命令来确认你是否已被添加到 `docker` 用户组中：
+
+```
+groups
+```
+
+该命令将列出当前用户所属的所有用户组。检查输出结果中是否包含 `docker` 组。如果在列表中看到 `docker`，则说明设置已成功。
+
+
+#### 2.2.6 启动docker守护进程
+
+接下来，你需要在 Ubuntu 中启动 Docker 守护进程。由于 WSL 默认不会自动启动 `dockerd`（Docker 守护进程），你需要手动启动它。
 
 打开另一个 ubuntu终端 窗口，进入 WSL Ubuntu 环境：
 ```
 sudo dockerd
 ```
 
-这会启动 Docker 守护进程，你需要让这个窗口保持打开状态，以保持 Docker 守护进程的持续运行。
+这会启动 Docker 守护进程
+
+:::danger 你需要让这个窗口保持打开状态，以保持 Docker 守护进程的持续运行。
+:::
 
 下一步就是安装open-webui的镜像并运行
 
@@ -398,7 +429,7 @@ Loaded image: ghcr.io/open-webui/open-webui:main
 
 继续在终端中输入：
 ```bash
-docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
 
 :::tip 参数解释
@@ -512,7 +543,7 @@ sudo dockerd
 在 新的终端窗口 中运行以下命令：
 
 ```
-docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
 
 ### 3.4 访问 Open Web UI
