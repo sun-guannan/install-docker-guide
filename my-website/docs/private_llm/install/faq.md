@@ -22,6 +22,19 @@ ollama 的模型保存在这里：
 
 将整个文件夹models文件夹复制到新的机器上。
 
+3. 验证复制模型
+
+如果复制成功，你执行`ollama list`，就可以看到复制过来的模型了。当你运行`ollama run`时，不会再次下载模型。
+
+
+## Q: 从windows复制模型到linux的时候遇到sha-256不匹配的问题
+
+mac和linux都符合POSIX协议，所以他们互相复制一般没有问题，但是windows复制到linux的时候可能会遇到问题。在复制完之后，最好检查一下以下几点：
+- 给复制的文件添加用户组权限：chown ollama:ollama
+- `ollama show [model-name] --modelfile`来查看现有的modelfile，检查FROM这一行的路径是否正确，如果不正确，需要重新创建一个Modelfile
+
+
+
 ## Q: 复制模型的时候遇到sha-256不匹配的问题
 
 一般是路径不对。
