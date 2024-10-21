@@ -62,10 +62,10 @@ export const InstallButton = ({ to, children }) => (
 :::
 
 
-## 2. windows安装视频
+## 2. 使用视频
 
 一键包启动后演示界面：
-<video controls width='600' src="/video/example_gpt_sovits.mp4" title="一键包启动后演示界面"/>
+<video controls width='500' src="/video/gpt-sovits-step-by-step.mp4" title="一键包启动后演示界面"/>
 
 ## 3. 图文教程
 ### 3.1 整合包下载
