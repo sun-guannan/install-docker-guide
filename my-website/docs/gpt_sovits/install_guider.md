@@ -210,7 +210,7 @@ export const InstallButton = ({ to, children }) => (
 
 先点一下刷新模型，下拉选择模型推理，e代表轮数，s代表步数。不是轮数越高越好。选择好模型点开启TTS推理，自动弹出推理界面。如果没有弹出，复制控制台最下面的链接在浏览器里打开。
 
-<img src='/img/interrferrence.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
+<img src='/img/interreference.png' style={{width:'1000px', height:'500px', marginRight:'12px'}}/>
 
 最上面可以切换模型，选择刚才训练出来的模型即可。然后上传一段参考音频，建议是数据集中的切割音频。最好5秒，并输入字幕。
 
