@@ -112,7 +112,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
   下载完成后，添加执行权限：
   ```bash
-  chmod +x ollama-linux-amd64
+  sudo chmod +x ollama-linux-amd64
   ```
 
   移动文件到系统路径
@@ -239,7 +239,7 @@ pulling 43f7a214e532...   1% ▕                ▏  63 MB/4.4 GB  7.0 MB/s  10m
   - 打开一个终端窗口，进入刚才下载的目录中，例如：
   
   ``` bash
-  cd ~/Downloads/llama3.1-chinese-F16
+  cd /mnt/d/Downloads/llama3.1-chinese-F16
   ```
   - 输入执行`ls`，确保文件在该路径中，你应该看到：
   ``` bash
@@ -394,8 +394,9 @@ docker-images-openwebui-tar.zip
 ```
 - 执行下面的命令解压缩镜像文件
 ```bash
-unzip docker-images-openwebui-tar.zip
-tar -xzvf x86-64-images.tar.gz
+sudo apt install unzip
+sudo unzip docker-images-openwebui-tar.zip
+sudo tar -xzvf x86-64-images.tar.gz
 ```
 
 - 执行`ls`，确保文件里包含解压缩之后的镜像，他应该是`.tar`后缀的，例如
@@ -403,7 +404,7 @@ tar -xzvf x86-64-images.tar.gz
 ghcr.io_open--webui_open-webui:main-amd64.tar
 ```
 
-- 使用docker加载镜像，执行`sudo docker load -i ghcr.io_open--webui_open-webui\:main-amd64.tar`，你应该可以看到docker开始加载镜像，例如：
+- 使用docker加载镜像，执行`sudo docker load -i ghcr.io_open--webui_open-webui:main-amd64.tar`，你应该可以看到docker开始加载镜像，例如：
 ``` bash
 e0781bc8667f: Loading layer  77.83MB/77.83MB
 8f8901bf8c60: Loading layer  9.539MB/9.539MB
@@ -494,7 +495,7 @@ always 表示无论容器为何退出，Docker 都会自动重启它。这对于
 a09512f358ee3c497543b3103878b1f06c89d0c956ba542baf58fb2e067f4727
 ```
 
-至此，你已经成功安装了open webui的镜像🎉🎉🎉，让我们执行 `curl http://127.0.0.1:3000` 可以看到页面的一些内容，如果这个服务器部署在内网或者外网，可以访问的话，就可以用客户机访问看看👀
+至此，你已经成功安装了open webui的镜像🎉🎉🎉，让我们执行 `curl http://127.0.0.1:8080` 可以看到页面的一些内容，如果这个服务器部署在内网或者外网，可以访问的话，就可以用客户机访问看看👀
 
 <div class="center">
   <video controls width='600' src="/video/open-webui-demo.mp4" title="open webui的运行视频"/>
