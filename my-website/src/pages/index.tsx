@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -33,6 +34,35 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
+
+  useEffect(() => {
+    // 动态创建 script 标签引入外部 JavaScript
+    const script = document.createElement('script');
+    script.src = "https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/0.1.0-beta.7/libs/cn/index.js";
+    script.async = true;
+
+    // 当脚本加载完成后，初始化 CozeWebSDK
+    script.onload = () => {
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: '7431101651919978508',
+        },
+        componentProps: {
+          title: '智AI小铺',
+          icon: '/img/logo.png'
+        },
+      });
+    };
+
+    // 将脚本添加到文档中
+    document.body.appendChild(script);
+
+    // 清理函数，在组件卸载时移除脚本
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
