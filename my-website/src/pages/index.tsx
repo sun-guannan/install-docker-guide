@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
         },
         componentProps: {
           title: '智AI小铺',
-          icon: '/img/logo.png'
+          icon: 'https://lf6-appstore-sign.oceancloudapi.com/ocean-cloud-tos/FileBizType.BIZ_BOT_ICON/279695297087852_1730282162823599099_s7w2pwsuNs.png?lk3s=68e6b6b5&x-expires=1730285762&x-signature=1xqnvxrWuxqVf9iYKyeT3OsnBW8%3D'
         },
       });
     };
