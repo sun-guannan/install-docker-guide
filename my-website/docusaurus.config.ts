@@ -118,7 +118,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 智AI小铺版权所有.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 智AI小铺版权所有`,
     },
     prism: {
       theme: prismThemes.github,
