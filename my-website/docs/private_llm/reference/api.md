@@ -49,7 +49,7 @@ Generate a response for a given prompt with a provided model. This is a streamin
 Advanced parameters (optional):
 
 - `format`: the format to return a response in. Format can be `json` or a JSON schema
-- `options`: additional model parameters listed in the documentation for the [Modelfile](./modelfile.md#valid-parameters-and-values) such as `temperature`
+- `options`: additional model parameters listed in the documentation for the Modelfile such as `temperature`
 - `system`: system message to (overrides what is defined in the `Modelfile`)
 - `template`: the prompt template to use (overrides what is defined in the `Modelfile`)
 - `stream`: if `false` the response will be returned as a single response object, rather than a stream of objects
@@ -509,7 +509,7 @@ The `message` object has the following fields:
 Advanced parameters (optional):
 
 - `format`: the format to return a response in. Format can be `json` or a JSON schema. 
-- `options`: additional model parameters listed in the documentation for the [Modelfile](./modelfile.md#valid-parameters-and-values) such as `temperature`
+- `options`: additional model parameters listed in the documentation for the Modelfile such as `temperature`
 - `stream`: if `false` the response will be returned as a single response object, rather than a stream of objects
 - `keep_alive`: controls how long the model will stay loaded into memory following the request (default: `5m`)
 
@@ -930,7 +930,7 @@ A single JSON object is returned:
 POST /api/create
 ```
 
-Create a model from a [`Modelfile`](./modelfile.md). It is recommended to set `modelfile` to the content of the Modelfile rather than just set `path`. This is a requirement for remote create. Remote model creation must also create any file blobs, fields such as `FROM` and `ADAPTER`, explicitly with the server using [Create a Blob](#create-a-blob) and the value to the path indicated in the response.
+Create a model from a `Modelfile`. It is recommended to set `modelfile` to the content of the Modelfile rather than just set `path`. This is a requirement for remote create. Remote model creation must also create any file blobs, fields such as `FROM` and `ADAPTER`, explicitly with the server using [Create a Blob](#create-a-blob) and the value to the path indicated in the response.
 
 ### Parameters
 
@@ -1391,7 +1391,7 @@ Generate embeddings from a model
 Advanced parameters:
 
 - `truncate`: truncates the end of each input to fit within context length. Returns error if `false` and context length is exceeded. Defaults to `true`
-- `options`: additional model parameters listed in the documentation for the [Modelfile](./modelfile.md#valid-parameters-and-values) such as `temperature`
+- `options`: additional model parameters listed in the documentation for the Modelfile such as `temperature`
 - `keep_alive`: controls how long the model will stay loaded into memory following the request (default: `5m`)
 
 ### Examples
@@ -1505,7 +1505,7 @@ Generate embeddings from a model
 
 Advanced parameters:
 
-- `options`: additional model parameters listed in the documentation for the [Modelfile](./modelfile.md#valid-parameters-and-values) such as `temperature`
+- `options`: additional model parameters listed in the documentation for the Modelfile such as `temperature`
 - `keep_alive`: controls how long the model will stay loaded into memory following the request (default: `5m`)
 
 ### Examples
