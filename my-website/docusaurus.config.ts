@@ -85,6 +85,11 @@ const config: Config = {
           label: '关于我们', 
           position: 'left'
         },
+        {
+          to: '/policies', 
+          label: '隐私政策', 
+          position: 'left'
+        },
       ],
     },
     footer: {
