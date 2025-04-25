@@ -99,6 +99,14 @@
   word-break: break-all;
 }
 
+.licenseKey {
+  font-family: monospace;
+  word-break: break-all;
+  background: #f5f5f5;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+}
 
 .projectsList {
   margin-top: 1rem;
@@ -133,4 +141,93 @@
 .projectItem .projectId {
   font-family: monospace;
   color: #666;
+}
+
+.stepIndicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.step.active {
+  background-color: #1877F2;
+  color: white;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.step.active:not(:last-child)::after {
+  background-color: #1877F2;
+}
+
+.stepSection {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.stepSection h2 {
+  margin-bottom: 1.5rem;
+  color: #1877F2;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+}
+
+.linkList li {
+  margin: 0.5rem 0;
+}
+
+.linkList a {
+  color: #1877F2;
+  text-decoration: none;
+}
+
+.linkList a:hover {
+  text-decoration: underline;
+}
+
+.codeBlock {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.codeBlock pre {
+  margin: 0;
+}
+
+.guideSection h3 {
+  margin: 1rem 0 0.5rem;
+  color: #666;
+}
+
+.guideSection ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
 }
