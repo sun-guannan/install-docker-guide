@@ -1,12 +1,37 @@
+/* 强制隐藏导航栏 */
+:global(.docusaurus-no-header) :global(.navbar) {
+  display: none !important;
+}
+
+/* 调整内容区域，避免被隐藏的导航栏占用空间 */
+:global(.docusaurus-no-header) :global(.main-wrapper) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .downloaderContainer {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 40px;
+  max-width: 1400px;
+  width: 1800px;
   margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 800px; /* 增大卡片最大宽度 */
+  margin: 0 auto;
+  padding: 30px; /* 增加内边距 */
 }
 
 .card:hover {
@@ -15,4 +40,17 @@
 
 .downloadButton {
   margin-top: 20px;
+  background-color: #13c2c2;
+  border-color: #13c2c2;
+}
+
+.downloadButton:hover {
+  background-color: #36cfc9;
+  border-color: #36cfc9;
+}
+
+.helpLink {
+  color: #13c2c2;
+  text-decoration: underline;
+  cursor: pointer;
 }

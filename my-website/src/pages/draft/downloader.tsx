@@ -2,100 +2,214 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useLocation } from '@docusaurus/router';
-import { Button, Card, Spin, Typography, message } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
+import { Button, Card, Spin, Typography, message, Input, Divider, Modal, Form, Image, Alert } from 'antd';
+import { DownloadOutlined, FolderOpenOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import styles from './downloader.module.css'; // 导入CSS模块
 
-// 创建CSS模块文件（可选）
-// 如果需要，可以创建 downloader.module.css 文件
+// 添加内联样式以强制隐藏导航栏
+const hideNavbarStyle = {
+  '.navbar': {
+    display: 'none !important',
+  },
+  '.main-wrapper': {
+    marginTop: '0 !important',
+    paddingTop: '0 !important',
+  },
+};
 
 interface DownloaderProps {
   draftId?: string;
 }
 
 function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [draftData, setDraftData] = useState<any>(null);
   const [error, setError] = useState<string>('');
+  const [draftFolder, setDraftFolder] = useState<string>('');
+  const [downloadUrl, setDownloadUrl] = useState<string>('');
+  const [form] = Form.useForm();
   
+  // 根据操作系统设置默认路径
   useEffect(() => {
-    // 当组件加载或draftId变化时获取数据
-    const fetchDraftData = async () => {
-      if (!draftId) {
-        setError('未提供草稿ID');
-        setLoading(false);
-        return;
-      }
-      
-      try {
-        setLoading(true);
-        // 这里替换为实际的API调用
-        // const response = await fetch(`/api/drafts/${draftId}`);
-        // const data = await response.json();
-        
-        // 模拟API响应
-        setTimeout(() => {
-          setDraftData({
-            id: draftId,
-            title: `草稿 ${draftId}`,
-            content: '这是草稿内容示例',
-            createdAt: new Date().toISOString(),
-          });
-          setLoading(false);
-        }, 1000);
-      } catch (err) {
-        setError('获取草稿数据失败');
-        setLoading(false);
-        message.error('获取草稿数据失败');
-      }
-    };
+    // 尝试从localStorage获取保存的路径
+    const savedPath = localStorage.getItem('jianying_draft_folder');
     
-    fetchDraftData();
-  }, [draftId]);
+    if (savedPath) {
+      // 如果有保存的路径，直接使用
+      setDraftFolder(savedPath);
+    } else {
+      // 否则设置默认路径
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      if (isMac) {
+        // Mac系统使用默认路径，不再尝试获取用户名
+        setDraftFolder(`/Users/用户名/Movies/JianyingPro/User Data/Projects/com.lveditor.draft`);
+      } else {
+        // Windows 默认路径
+        setDraftFolder('C:\\Users\\Administrator\\AppData\\Local\\JianyingPro\\User Data\\Projects\\com.lveditor.draft');
+      }
+    }
+  }, []);
   
-  const handleDownload = () => {
-    if (!draftData) return;
-    
-    message.success(`开始下载草稿 ${draftId}`);
-    // 这里实现实际的下载逻辑
+  // 当用户修改路径时，保存到localStorage
+  const handleDraftFolderChange = (e) => {
+    const newPath = e.target.value;
+    setDraftFolder(newPath);
+    localStorage.setItem('jianying_draft_folder', newPath);
   };
   
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
-        <Spin size="large" tip="加载中..." />
-      </div>
-    );
-  }
+  const handleDownload = async () => {
+    if (!draftId) {
+      message.error('未提供草稿ID');
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      // 调用下载API
+      const response = await fetch('https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run/save_draft', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          draft_id: draftId,
+          draft_folder: draftFolder,
+          license_key: '539C3FEB-74AE48D4-A964D52B-C520F801' // 使用体验版license key
+        }),
+      });
+      
+      const result = await response.json();
+      
+    //   // 添加3秒延迟
+    //   await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      if (result.output && result.output.success === true) {
+        setDraftData(result.output);
+        if (result.output.draft_url) {
+          setDownloadUrl(result.output.draft_url);
+          message.success('草稿获取成功，正在自动下载...');
+          // 自动触发下载
+          window.location.href = result.output.draft_url;
+        } else {
+          message.warning('草稿获取成功，但未找到下载链接');
+        }
+      } else {
+        setError(result.output.error || '下载失败，未知错误');
+        message.error(result.output.error || '下载失败，未知错误');
+      }
+    } catch (err) {
+      setError('请求失败，请检查网络连接');
+      message.error('请求失败，请检查网络连接');
+    } finally {
+      setLoading(false);
+    }
+  };
   
-  if (error) {
-    return (
-      <div style={{ textAlign: 'center', padding: '50px' }}>
-        <Typography.Title level={4} type="danger">{error}</Typography.Title>
-      </div>
-    );
-  }
+  const handleOpenHelp = () => {
+    window.open('https://jcnwn0uxeapc.feishu.cn/wiki/RFQPw5ZKHiY4cakxMQmclEmJnLf', '_blank');
+  };
   
   return (
-    <div style={{ padding: '20px' }}>
-      <Card title={draftData?.title} bordered={false} style={{ maxWidth: 800, margin: '0 auto' }}>
-        <Typography.Paragraph>
-          <strong>ID:</strong> {draftData?.id}
-        </Typography.Paragraph>
-        <Typography.Paragraph>
-          <strong>创建时间:</strong> {new Date(draftData?.createdAt).toLocaleString()}
-        </Typography.Paragraph>
-        <Typography.Paragraph>
-          <strong>内容:</strong> {draftData?.content}
-        </Typography.Paragraph>
+    <div className={styles.downloaderContainer}>
+      <Card 
+        className={styles.card} 
+        bordered={false} 
+        style={{ margin: '0 auto', width: '100%', maxWidth: 800 }}
+      >
+
+        <Alert 
+          message="草稿仅保留10分钟，请尽快下载" 
+          type="info" 
+          showIcon 
+          style={{ marginBottom: 30 }}
+        />
+
+        {/* 添加圆形logo */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+          <Image
+            src="/img/cut_logo.png"
+            alt="Logo"
+            preview={false}
+            style={{ 
+              width: 80, 
+              height: 80, 
+              borderRadius: '50%', // 使图片呈现为圆形
+              objectFit: 'cover' // 确保图片填充整个区域
+            }}
+          />
+        </div>
+        
+        <Typography.Title level={3} style={{ color: '#000000E0', fontSize: 24, fontWeight: 600, textAlign: 'center' }}>
+          下载草稿
+        </Typography.Title>
+        
+        <Form form={form} layout="vertical">
+          <Form.Item 
+            label={<span style={{ fontSize: 16, fontWeight: 500, color: '#000000E0' }}>剪映目录：</span>}
+            name="draftFolder"
+          >
+            <Input 
+              value={draftFolder}
+              onChange={handleDraftFolderChange}
+              placeholder={draftFolder}
+              style={{ fontSize: 14, color: '#000000E0' }}
+            />
+          </Form.Item>
+        </Form>
+        
+        
+        <Divider style={{ borderColor: '#0505050F' }} />
+        
+        <div style={{ marginBottom: 20 }}>
+          <Typography.Paragraph style={{ fontSize: 14, color: '#000000A6', display: 'flex', alignItems: 'center' }}>
+            <QuestionCircleOutlined style={{ marginRight: 8, color: '#13c2c2' }} />
+            不知道如何获取？
+            <Typography.Link 
+              onClick={handleOpenHelp} 
+              style={{ marginLeft: 8, color: '#13c2c2', fontSize: 14 }}
+            >
+              点击查看帮助
+            </Typography.Link>
+          </Typography.Paragraph>
+        </div>
+        
+        
+        {/* 修改按钮样式为primary类型 */}
         <Button 
           type="primary" 
           icon={<DownloadOutlined />} 
           onClick={handleDownload}
-          size="large"
+          loading={loading}
+          disabled={loading}
+          block
+          style={{ 
+            height: 40,
+            fontSize: 16,
+            fontWeight: 500,
+            marginTop: 10,
+          }}
         >
-          下载草稿
+          {loading ? '下载草稿中...' : '下载草稿'}
         </Button>
+        
+        {loading && (
+          <div style={{ marginTop: 30, textAlign: 'center' }}>
+            <Spin size="default">
+              <Alert
+                message="正在处理您的草稿"
+                description="系统正在处理您的草稿，这可能需要1-2分钟的时间，请耐心等待。"
+                type="info"
+              />
+            </Spin>
+          </div>
+        )}
+        
+        {error && (
+          <div style={{ marginTop: 20 }}>
+            <Alert message={error} type="error" />
+          </div>
+        )}
       </Card>
     </div>
   );
@@ -106,19 +220,36 @@ export default function Downloader(): JSX.Element {
   
   // 使用BrowserOnly确保只在客户端渲染时访问window对象
   return (
-    <Layout
-      title={`草稿下载器 | ${siteConfig.title}`}
-      description="下载您的草稿文件">
-      <BrowserOnly>
-        {() => {
-          // 解析URL参数获取draft_id
-          const location = useLocation();
-          const params = new URLSearchParams(location.search);
-          const draftId = params.get('draft_id') || undefined;
-          
-          return <DownloaderContent draftId={draftId} />;
-        }}
-      </BrowserOnly>
-    </Layout>
+    <>
+      {/* 添加内联样式标签 */}
+      <style jsx global>{`
+        .navbar {
+          display: none !important;
+        }
+        .main-wrapper {
+          margin-top: 0 !important;
+          padding-top: 0 !important;
+        }
+      `}</style>
+      
+      <Layout
+        title={`剪映草稿下载 | ${siteConfig.title}`}
+        description="下载您的剪映草稿文件"
+        wrapperClassName="docusaurus-no-header"
+        noFooter={true}>
+        <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+          <BrowserOnly>
+            {() => {
+              // 解析URL参数获取draft_id
+              const location = useLocation();
+              const params = new URLSearchParams(location.search);
+              const draftId = params.get('draft_id') || undefined;
+              
+              return <DownloaderContent draftId={draftId} />;
+            }}
+          </BrowserOnly>
+        </div>
+      </Layout>
+    </>
   );
 }
