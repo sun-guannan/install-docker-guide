@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useLocation } from '@docusaurus/router';
-import { Button, Card, Spin, Typography, message, Input, Divider, Modal, Form, Image, Alert } from 'antd';
+import { Button, Card, Spin, Typography, message, Input, Divider, Modal, Form, Image, Alert, Progress, Flex } from 'antd';
 import { DownloadOutlined, FolderOpenOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import styles from './downloader.module.css'; // 导入CSS模块
+
+// 添加API URL常量
+const DEBUG = false; // 设置为true时使用本地开发服务器
+const API_BASE_URL = DEBUG ? 'http://localhost:9000' : 'https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run';
 
 // 添加内联样式以强制隐藏导航栏
 const hideNavbarStyle = {
@@ -28,6 +32,9 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
   const [error, setError] = useState<string>('');
   const [draftFolder, setDraftFolder] = useState<string>('');
   const [downloadUrl, setDownloadUrl] = useState<string>('');
+  const [taskId, setTaskId] = useState<string>(''); // 添加taskId状态
+  const [prepareDraftmessage, setPrepareDraftmessage] = useState<string>('');
+  const [progress, setProgress] = useState<number>(0); // 添加进度状态
   const [form] = Form.useForm();
   
   // 根据操作系统设置默认路径
@@ -63,11 +70,13 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
       message.error('未提供草稿ID');
       return;
     }
+
+    setPrepareDraftmessage("")
     
     setLoading(true);
     try {
-      // 调用下载API
-      const response = await fetch('https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run/save_draft', {
+      // 调用下载API，使用常量API_BASE_URL
+      const response = await fetch(`${API_BASE_URL}/save_draft`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,27 +90,79 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
       
       const result = await response.json();
       
-    //   // 添加3秒延迟
-    //   await new Promise(resolve => setTimeout(resolve, 3000));
-      
       if (result.output && result.output.success === true) {
         setDraftData(result.output);
-        if (result.output.draft_url) {
-          setDownloadUrl(result.output.draft_url);
-          message.success('草稿获取成功，正在自动下载...');
-          // 自动触发下载
-          window.location.href = result.output.draft_url;
+        if (result.output.task_id) {
+          // 获取task_id并开始查询状态
+          setTaskId(result.output.task_id);
+          queryDraftStatus(result.output.task_id);
         } else {
-          message.warning('草稿获取成功，但未找到下载链接');
+          setError('未获取到任务ID');
+          message.error('未获取到任务ID');
+          setLoading(false);
         }
       } else {
         setError(result.output.error || '下载失败，未知错误');
         message.error(result.output.error || '下载失败，未知错误');
+        setLoading(false);
       }
     } catch (err) {
       setError('请求失败，请检查网络连接');
       message.error('请求失败，请检查网络连接');
-    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // 添加查询草稿状态的方法
+  const queryDraftStatus = async (taskId: string) => {
+    try {
+      // 使用常量API_BASE_URL
+      const response = await fetch(`${API_BASE_URL}/query_draft_status`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          task_id: taskId,
+          license_key: '539C3FEB-74AE48D4-A964D52B-C520F801'
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.output) {
+        // 更新draftData以包含message信息
+        setDraftData(result.output);
+        
+        // 如果有新消息，则添加到消息历史数组中
+        setPrepareDraftmessage(result.output.message);
+        setProgress(result.output.progress);
+        
+        if (result.output.draft_url) {
+          // 获取到下载链接，完成处理
+          setProgress(100); // 设置进度为100%
+          setDownloadUrl(result.output.draft_url);
+          message.success('草稿获取成功，正在自动下载...');
+          // 自动触发下载
+          window.location.href = result.output.draft_url;
+          setLoading(false);
+        } else if (result.output.message) {
+          // 任务仍在处理中，继续查询
+          setTimeout(() => queryDraftStatus(taskId), 1000); // 1秒后再次查询
+        } else {
+          // 未获取到有效信息
+          setError('获取草稿状态失败');
+          message.error('获取草稿状态失败');
+          setLoading(false);
+        }
+      } else {
+        setError('查询任务状态失败');
+        message.error('查询任务状态失败');
+        setLoading(false);
+      }
+    } catch (err) {
+      setError('请求失败，请检查网络连接');
+      message.error('请求失败，请检查网络连接');
       setLoading(false);
     }
   };
@@ -194,12 +255,25 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
         </Button>
         
         {loading && (
-          <div style={{ marginTop: 30, textAlign: 'center' }}>
+          <div style={{ marginTop: 10 }}>
+            {/* 添加进度条 */}
+            <div style={{ marginBottom: 10 }}>
+              <Progress 
+                percent={progress} 
+                status="active" 
+                strokeColor={{
+                  '0%': '#108ee9',
+                  '100%': '#87d068',
+                }}
+              />
+            </div>
+            
             <Spin size="default">
               <Alert
                 message="正在处理您的草稿"
-                description="系统正在处理您的草稿，这可能需要1-2分钟的时间，请耐心等待。"
+                description={prepareDraftmessage}
                 type="info"
+                showIcon
               />
             </Spin>
           </div>
