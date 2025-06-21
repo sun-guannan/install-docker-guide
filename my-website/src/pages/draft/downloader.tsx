@@ -146,6 +146,11 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
           // 自动触发下载
           window.location.href = result.output.draft_url;
           setLoading(false);
+        } else if (result.output.status === 'failed') {
+          // 获取任务出现异常
+          setError(result.output.message);
+          message.error(result.output.message);
+          setLoading(false);
         } else if (result.output.message) {
           // 任务仍在处理中，继续查询
           setTimeout(() => queryDraftStatus(taskId), 1000); // 1秒后再次查询
