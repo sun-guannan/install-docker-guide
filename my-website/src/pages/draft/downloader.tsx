@@ -72,7 +72,7 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
     }
 
     setPrepareDraftmessage("")
-    
+    setError('')
     setLoading(true);
     try {
       // 调用下载API，使用常量API_BASE_URL
