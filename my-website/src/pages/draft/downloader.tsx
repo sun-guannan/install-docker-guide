@@ -161,10 +161,6 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
           message.error('获取草稿状态失败');
           setLoading(false);
         }
-      } else {
-        setError('查询任务状态失败');
-        message.error('查询任务状态失败');
-        setLoading(false);
       }
     } catch (err) {
       setError('请求失败，请检查网络连接');
