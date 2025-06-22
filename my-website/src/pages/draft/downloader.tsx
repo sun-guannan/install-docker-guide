@@ -75,6 +75,8 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
     setError('')
     setLoading(true);
     try {
+      // 开始查询任务状态
+      queryDraftStatus(draftId);
       // 调用下载API，使用常量API_BASE_URL
       const response = await fetch(`${API_BASE_URL}/save_draft`, {
         method: 'POST',
@@ -94,8 +96,7 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
         setDraftData(result.output);
         if (result.output.task_id) {
           // 获取task_id并开始查询状态
-          setTaskId(result.output.task_id);
-          queryDraftStatus(result.output.task_id);
+          // setTaskId(result.output.task_id); // 修改这里，直接使用draftId而不是task_id
         } else {
           setError('未获取到任务ID');
           message.error('未获取到任务ID');
@@ -153,7 +154,7 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
           setLoading(false);
         } else if (result.output.message) {
           // 任务仍在处理中，继续查询
-          setTimeout(() => queryDraftStatus(taskId), 1000); // 1秒后再次查询
+          setTimeout(() => queryDraftStatus(draftId), 1000); // 修改这里，传递draftId而不是taskId
         } else {
           // 未获取到有效信息
           setError('获取草稿状态失败');
