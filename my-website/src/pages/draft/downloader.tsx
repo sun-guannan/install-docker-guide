@@ -8,7 +8,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import styles from './downloader.module.css'; // 导入CSS模块
 
 // 添加API URL常量
-const DEBUG = false; // 设置为true时使用本地开发服务器
+const DEBUG = true; // 设置为true时使用本地开发服务器
 const API_BASE_URL = DEBUG ? 'http://localhost:9000' : 'https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run';
 
 // 添加内联样式以强制隐藏导航栏
@@ -94,14 +94,14 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
       
       if (result.output && result.output.success === true) {
         setDraftData(result.output);
-        if (result.output.task_id) {
-          // 获取task_id并开始查询状态
-          // setTaskId(result.output.task_id); // 修改这里，直接使用draftId而不是task_id
-        } else {
-          setError('未获取到任务ID');
-          message.error('未获取到任务ID');
-          setLoading(false);
-        }
+        // if (result.output.task_id) {
+        //   // 获取task_id并开始查询状态
+        //   // setTaskId(result.output.task_id); // 修改这里，直接使用draftId而不是task_id
+        // } else {
+        //   setError('未获取到任务ID');
+        //   message.error('未获取到任务ID');
+        //   setLoading(false);
+        // }
       } else {
         setError(result.output.error || '下载失败，未知错误');
         message.error(result.output.error || '下载失败，未知错误');
