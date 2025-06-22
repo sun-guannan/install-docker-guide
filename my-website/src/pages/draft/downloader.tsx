@@ -161,6 +161,9 @@ function DownloaderContent({ draftId }: DownloaderProps): JSX.Element {
           message.error('获取草稿状态失败');
           setLoading(false);
         }
+      } else {
+        // 任务仍在处理中，继续查询
+        setTimeout(() => queryDraftStatus(draftId), 1000); // 修改这里，传递draftId而不是taskId
       }
     } catch (err) {
       setError('请求失败，请检查网络连接');
