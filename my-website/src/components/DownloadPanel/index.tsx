@@ -6,7 +6,7 @@ import { useLocation } from '@docusaurus/router'; // Docusaurus 路由钩子，�
 import styles from './styles.module.css'; // 导入CSS模块
 
 // 添加API URL常量
-const DEBUG = true; // 设置为true时使用本地开发服务器
+const DEBUG = false; // 设置为true时使用本地开发服务器
 const API_BASE_URL = DEBUG ? 'http://localhost:9000' : 'https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run';
 
 interface DownloadPanelProps {
