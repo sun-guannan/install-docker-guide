@@ -123,7 +123,7 @@ const TimelinePanel: React.FC<TimelineProps> = ({
             id: segment.id,
             start: start,
             end: end,
-            effectId: track.type,
+            effectId: material.type, // 将track.type改为material.type
             flexible: false,
             duration: segment.target_timerange.duration,
             remote_url: remoteUrl,

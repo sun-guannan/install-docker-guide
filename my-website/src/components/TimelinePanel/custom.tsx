@@ -79,7 +79,7 @@ const RenderTypeMap: Record<string, FC<{
         );
     },
     // 图片类型渲染器 (修改这里，使其背景色独立响应 selected 状态)
-    'image': ({ action, onKeyframeClick }) => {
+    'photo': ({ action, onKeyframeClick }) => {
         // *** 关键修改：图片类型使用自己的选中/未选中背景类 ***
         const imageRootClassNames = `${styles.customRenderAudioWaveform} ${action.selected ? styles.customRenderImageformSelected : styles.customRenderImageformUnselected}`;
 

@@ -74,7 +74,7 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({ selectedItem }) => {
     }
 
     // 图片素材详情
-    if (selectedItem.type === 'image') {
+    if (selectedItem.type === 'photo') {
       const content:string = selectedItem.remote_url;
       items.push(
         {
@@ -189,7 +189,6 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({ selectedItem }) => {
 
     // 关键帧 (Keyframe) 特有详情
     if (selectedItem.type === 'keyframe') {
-      debugger;
       items.push(
         {
           key: 'time_offset',
