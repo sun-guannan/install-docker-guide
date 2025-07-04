@@ -16,7 +16,7 @@ const { Header, Content } = AntdLayout; // 使用 AntdLayout 的组件
 const { Title } = Typography;
 
 // API URL 常量
-const DEBUG = true;
+const DEBUG = false;
 const API_BASE_URL = DEBUG ? 'http://localhost:9000' : 'https://cut-jianying-vdvswivepm.cn-hongkong.fcapp.run';
 
 // 全局样式，用于隐藏 Docusaurus 导航栏和调整布局
