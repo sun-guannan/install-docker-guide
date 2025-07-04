@@ -1,57 +1,170 @@
-/* 强制隐藏导航栏 */
-:global(.docusaurus-no-header) :global(.navbar) {
-  display: none !important;
+/* src/pages/draft/downloader.module.css */
+/* 统一的字体家族 */
+:global(html), :global(body) {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px; /* 主字体大小 */
+  line-height: 22px; /* 主行高 */
 }
 
-/* 调整内容区域，避免被隐藏的导航栏占用空间 */
-:global(.docusaurus-no-header) :global(.main-wrapper) {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+/* Ant Design 默认文本颜色，确保在深色背景下可见 */
+:global(.ant-typography) {
+  color: #FFFFFF !important;
 }
 
-.downloaderContainer {
-  padding: 40px;
-  max-width: 1400px;
-  width: 1800px;
-  height: 1000px;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  min-height: 100vh;
-  background-color: #FFFFFF;
+/* Ant Design 默认边框颜色 */
+:global(.ant-border) {
+  border-color: #444 !important;
+}
+
+.mainLayout {
+  min-height: 100%; /* 确保占据整个父容器高度 */
+  background-color: #1a1a1a; /* 整体深色背景 */
+  color: #FFFFFF; /* 默认文字颜色为白色 */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.appHeader {
+  background-color: #434343; /* Header 背景色 */
+  padding: 0 20px;
+  height: 64px; /* 标准 Antd Header 高度 */
+  display: flex;
   align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #3a3a3a; /* 分割线颜色 */
 }
 
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.appTitle {
+  color: #FFFFFF !important; /* 标题文字颜色 */
+  margin: 0 !important;
+  font-size: 24px !important; /* 字体大小 */
+  line-height: 32px !important; /* 行高 */
+  font-weight: 600; /* 字重 */
+}
+
+.appContent {
+  padding: 16px; /* 内容区内边距 */
+  flex: 1; /* 占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 防止内部滚动条影响整体布局 */
+}
+
+.topPanelsRow {
+  margin-bottom: 16px; /* 上方模块与下方轨道的间距 */
+  flex-grow: 1; /* 上方区域占据剩余所有空间 */
+  height: 100px;
+}
+
+.panelCol {
+  height: 100%; /* 填充父容器高度 */
+  display: flex; /* 让卡片内容填充 Col */
+  flex-direction: column;
+}
+
+/* 覆盖所有面板的 Antd Card 样式 */
+.panelCol :global(.ant-card) {
+  background-color: #1f1f1f !important; /* 所有面板的深色背景 */
   border-radius: 8px;
-  background-color: #fff;
-  width: 100%;
-  max-width: 800px; /* 增大卡片最大宽度 */
-  margin: 0 auto;
-  padding: 30px; /* 增加内边距 */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #444 !important; /* 边框颜色 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
 }
 
-.card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.panelCol :global(.ant-card-head) {
+  background-color: #434343 !important; /* 卡片头部深色 */
+  border-bottom: 1px solid #444 !important;
+  color: #FFFFFF !important; /* 头部文字颜色 */
 }
 
-.downloadButton {
-  margin-top: 20px;
-  background-color: #13c2c2;
-  border-color: #13c2c2;
+.panelCol :global(.ant-card-head-title) {
+  color: #FFFFFF !important; /* 确保标题颜色 */
 }
 
-.downloadButton:hover {
-  background-color: #36cfc9;
-  border-color: #36cfc9;
+.panelCol :global(.ant-card-body) {
+  flex-grow: 1; /* 内容区域填充 */
+  overflow-y: auto; /* 内容可滚动 */
+  padding: 16px !important;
+  font-size: 14px; /* 内容区字体大小 */
+  line-height: 22px; /* 内容区行高 */
+  color: #CCCCCC; /* 内容区默认文字颜色 */
 }
 
-.helpLink {
-  color: #13c2c2;
-  text-decoration: underline;
-  cursor: pointer;
+.timelineRow {
+  height: 300px; /* timeline Row 的固定高度 */
+  flex-shrink: 0; /* 防止收缩 */
+  margin-top: 0 !important; /* 消除 Row 默认顶部 margin */
+  padding: 0;
+}
+
+/* 覆盖 Ant Design Input 样式 */
+:global(.ant-input), :global(.ant-input-affix-wrapper), :global(.ant-input-borderless) {
+  background-color: #3a3a3a !important; /* 输入框背景 */
+  border: 1px solid #555 !important; /* 输入框边框 */
+  color: #FFFFFF !important; /* 输入框文字颜色 */
+  font-size: 14px !important;
+  line-height: 22px !important;
+  border-radius: 4px !important;
+}
+
+:global(.ant-input::placeholder) {
+  color: #A0A0A0 !important; /* Placeholder 颜色 */
+}
+
+/* 覆盖 Ant Design Button 样式 */
+:global(.ant-btn-primary) {
+  background-color: #13c2c2 !important; /* 主色 */
+  border-color: #13c2c2 !important; /* 主色 */
+  color: #FFFFFF !important; /* 文字白色 */
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+}
+
+:global(.ant-btn-primary:hover) {
+  background-color: #36cfc9 !important; /* cyan-5 */
+  border-color: #36cfc9 !important; /* cyan-5 */
+  color: #FFFFFF !important;
+}
+
+/* 覆盖 Ant Design Alert 样式 */
+:global(.ant-alert-info) {
+  background-color: #00474f !important; /* cyan-9 */
+  border-color: #006d75 !important; /* cyan-8 */
+  color: #FFFFFF !important; /* 文字白色 */
+}
+
+:global(.ant-alert-info .ant-alert-message),
+:global(.ant-alert-info .ant-alert-description) {
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+}
+
+:global(.ant-alert-error) {
+  background-color: #ff4d4f !important; /* 错误颜色 */
+  border-color: #cf1322 !important;
+  color: #FFFFFF !important;
+}
+
+:global(.ant-alert-error .ant-alert-message),
+:global(.ant-alert-error .ant-alert-description) {
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+}
+
+/* 覆盖 Progress 样式 */
+:global(.ant-progress-text) {
+  color: #CCCCCC !important; /* 进度条文字颜色 */
+  font-size: 12px;
+  line-height: 18px;
 }

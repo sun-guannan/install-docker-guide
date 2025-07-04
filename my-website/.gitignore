@@ -1,6 +1,9 @@
 # Dependencies
 /node_modules
 
+# react-timeline-editor
+/packages/react-timeline-editor/node_modules
+
 # Production
 /build
 

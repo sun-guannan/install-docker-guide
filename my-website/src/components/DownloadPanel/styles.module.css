@@ -1,0 +1,223 @@
+/* src/components/DownloadPanel/styles.module.css */
+.panelCard {
+    background-color: #1f1f1f; /* 深色背景 */
+    border-radius: 8px;
+    height: 100%; /* 填充父容器高度 */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+  
+  .panelTitle {
+    color: #FFFFFF !important; /* 标题文字颜色 */
+    text-align: center;
+    margin-bottom: 0 !important;
+    font-size: 20px !important; /* 字体大小 */
+    line-height: 28px !important; /* 行高 */
+    font-weight: 600; /* 字重 */
+    background-color: #434343; /* 添加背景色，与PreviewPanel一致 */
+    padding: 14px; /* 添加内边距 */
+    border-bottom: 1px solid #444; /* 添加底部边框 */
+  }
+  
+  .panelContent {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    color: #CCCCCC; /* 默认内容文字颜色 */
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  .infoAlert {
+    background-color: #00474f !important; /* cyan-9 */
+    border-color: #006d75 !important; /* cyan-8 */
+    color: #FFFFFF !important; /* 白色文字 */
+  }
+  
+  .infoAlert .ant-alert-message,
+  .infoAlert .ant-alert-description {
+    color: #FFFFFF !important;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  .logoContainer {
+    display: flex;
+    /* justify-content: center; */
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .logoImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .subTitle {
+    color: #FFFFFF !important; /* 调整标题颜色 */
+    font-size: 16px !important; /* 字体大小 */
+    line-height: 24px !important; /* 行高 */
+    font-weight: 600; /* 字重 */
+    text-align: center;
+    margin-bottom: 20px !important;
+  }
+  
+  .formItemLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: #A0A0A0; /* 辅助文字颜色 */
+  }
+  
+  .pathInput {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    color: #FFFFFF !important; /* 输入框文字颜色 */
+    background-color: #3a3a3a !important; /* 输入框背景 */
+    border: 1px solid #555 !important; /* 输入框边框 */
+    border-radius: 4px;
+  }
+  
+  .panelDivider {
+    border-color: #3a3a3a !important; /* 分割线颜色 */
+    margin: 16px 0 !important;
+  }
+  
+  .helpParagraph {
+    font-size: 14px;
+    line-height: 22px;
+    color: #A0A0A0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .helpIcon {
+    margin-right: 6px;
+    color: #13c2c2; /* 主色 */
+    font-size: 14px;
+  }
+  
+  .helpLink {
+    margin-left: 6px;
+    color: #13c2c2 !important; /* 主色 */
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+  
+  .downloadButton {
+    height: 36px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-weight: 500 !important;
+    margin-top: 10px !important;
+    background-color: #13c2c2 !important; /* 主色 */
+    border-color: #13c2c2 !important; /* 主色 */
+    color: #FFFFFF !important; /* 按钮文字白色 */
+    border-radius: 4px !important;
+  }
+  
+  .downloadButton:hover {
+    background-color: #36cfc9 !important; /* cyan-5 */
+    border-color: #36cfc9 !important; /* cyan-5 */
+    color: #FFFFFF !important; /* 确保 hover 时文字仍为白色 */
+  }
+  
+  .progressBar :global(.ant-progress-text) {
+    color: #CCCCCC !important; /* 进度条文字颜色 */
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .loadingSpin {
+    display: block; /* 确保 Spin 独占一行 */
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .loadingAlert {
+    background-color: #00474f !important; /* cyan-9 */
+    border-color: #006d75 !important; /* cyan-8 */
+    color: #FFFFFF !important; /* 白色文字 */
+  }
+  
+  .loadingAlert .ant-alert-message,
+  .loadingAlert .ant-alert-description {
+    color: #FFFFFF !important;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  .errorAlert {
+    background-color: #ff4d4f !important; /* Ant Design 默认错误色 */
+    border-color: #cf1322 !important;
+    color: #FFFFFF !important;
+  }
+  
+  .logoDownloadIcon {
+    margin-top: -20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 0 0 50% 50%;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .logoDownloadIcon:hover {
+    background-color: rgba(19, 194, 194, 0.2);
+    transform: translateY(2px);
+  }
+
+.logoContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logoImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logoDownloadIcon {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(19, 194, 194, 0.9);
+  border-radius: 0 0 50px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.logoDownloadIcon:hover {
+  background-color: rgba(19, 194, 194, 1);
+  transform: translateY(2px);
+}
+
+.logoDownloadLoading {
+  background-color: rgba(128, 128, 128, 0.7);
+  cursor: not-allowed;
+}
+
+.logoDownloadLoading:hover {
+  background-color: rgba(128, 128, 128, 0.7);
+  transform: none;
+}

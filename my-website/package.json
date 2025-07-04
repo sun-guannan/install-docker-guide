@@ -12,8 +12,13 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "build:timeline-editor": "yarn workspace @xzdarcy/react-timeline-editor build",
+    "prebuild": "yarn build:timeline-editor"
   },
+  "workspaces": [
+    "packages/*" 
+  ],
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@docusaurus/core": "3.4.0",
@@ -29,7 +34,8 @@
     "@docusaurus/module-type-aliases": "3.4.0",
     "@docusaurus/tsconfig": "3.4.0",
     "@docusaurus/types": "3.4.0",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "father-build": "^1.17.2"
   },
   "browserslist": {
     "production": [

@@ -1,0 +1,348 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+.timelineContainer {
+  flex-shrink: 0;
+  height: 300px;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  border: 1px solid #444;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+.timelineDivider {
+  border-color: #3a3a3a !important;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  color: #FFFFFF !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 600;
+  /* 确保分隔线在标尺上方，如果需要 */
+  position: relative;
+  z-index: 10;
+}
+
+.timelineContentWrapper {
+  box-sizing: border-box;
+}
+
+.trackRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.trackLabel {
+  width: 90px;
+  flex-shrink: 0;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #3a3a3a;
+  padding-right: 5px;
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+.trackIcon {
+  font-size: 20px;
+  line-height: 28px;
+  color: #13c2c2;
+}
+
+.trackTypeText {
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.trackVisual {
+  flex-grow: 1;
+  position: relative;
+  height: 30px;
+  background-color: #434343;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.segment {
+  position: absolute;
+  height: 28px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  transition: all 0.1s ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.keyframe {
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.secondaryText {
+  color: #A0A0A0 !important;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  display: block;
+  padding-top: 20px;
+}
+
+/* custom_render.css */
+
+.customRenderAudioWaveform {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+/* 未选中态背景色 */
+.customRenderAudioWaveformUnselected {
+  background-color: #00474f;
+}
+
+/* 选中态背景色 */
+.customRenderAudioWaveformSelected {
+  background-color: #b5f5ec;
+}
+
+
+/* 图片类型 未选中态背景色 */
+.customRenderImageformUnselected {
+  background-color: #614700;
+}
+
+/* 图片类型 选中态背景色 */
+.customRenderImageformSelected {
+  background-color: #ffffb8;
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderImageformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderImageformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+
+.customRenderVideoformUnselected {
+  background-color: #002c8c;
+}
+
+/* 图片类型 选中态背景色 */
+.customRenderVideoformSelected {
+  background-color: #bae0ff;
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderVideoformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderVideoformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+.customRenderTextformUnselected {
+  background-color: #874d00;
+}
+
+/* 图片类型 选中态背景色 */
+.customRenderTextformSelected {
+  background-color: #fff1b8;
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderTextformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderTextformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+.customRenderStikerformUnselected {
+  background-color: #876800;
+}
+
+/* 图片类型 选中态背景色 */
+.customRenderStikerformSelected {
+  background-color: #ffffb8;
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderStikerformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderStikerformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+.customRenderEffectformUnselected {
+  background-color: #391085;
+}
+
+/* 图片类型 选中态背景色 */
+.customRenderEffectformSelected {
+  background-color: #efdbff;
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderEffectformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderEffectformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+
+/* --- 新增：标签容器样式 --- */
+.labelsContainer {
+  position: absolute; /* 让整个标签容器定位在顶部 */
+  top: 4px;
+  left: 6px; /* 从左边开始 */
+  display: flex; /* <--- 关键：使用 Flexbox 让内部标签并排 */
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* <--- 标签之间的间距 */
+  z-index: 2; /* 确保标签容器在波形图背景之上 */
+  pointer-events: none; /* 添加此属性，使容器不拦截点击事件 */
+}
+
+/* 通用标签样式 */
+.customRenderAudioLabel {
+  /* position: absolute; <--- 移除此属性 */
+  display: flex;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji'; /* <--- 应用字体库 */
+  font-size: 12px; /* <--- 应用字体大小 */
+  line-height: 20px; /* <--- 应用行高 */
+  font-weight: 400; /* <--- 应用字体粗细 */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1); /* 黑色，不透明度 30% */
+  pointer-events: none; /* 添加此属性，使标签不拦截点击事件 */
+}
+
+
+/* 未选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderAudioWaveformUnselected .customRenderAudioLabel {
+  color: #FFFFFFA6; /* <--- 未选中时字体颜色 */
+}
+
+/* 选中时 customRenderAudioWaveform 内部标签的字体颜色 */
+.customRenderAudioWaveformSelected .customRenderAudioLabel {
+  color: #000000A6; /* <--- 选中时字体颜色 */
+}
+
+.audioWaveformBackground {
+  width: 100%;
+  height: 100%; /* 确保它在 flex 容器中尝试占据 100% 高度 */
+  flex-grow: 1; /* 关键：让这个元素占据所有剩余的垂直空间 */
+  display: block; /* 确保它是一个块级元素 */
+
+  background-repeat: repeat-x; /* 横向重复 */
+  background-size: auto 100%; /* 宽度自动，高度填充自身容器 */
+  background-position: left bottom; /* 将背景图片定位到底部 */
+}
+
+/* 图片内容样式 */
+.imageContent {
+  width: 100%;
+  height: 100%; /* 确保它在 flex 容器中尝试占据 100% 高度 */
+  flex-grow: 1; /* 关键：让这个元素占据所有剩余的垂直空间 */
+  display: block; /* 确保它是一个块级元素 */
+
+  background-repeat: repeat-x; /* 横向重复 */
+  background-size: auto 100%; /* 宽度自动，高度填充自身容器 */
+  background-position: left bottom; /* 将背景图片定位到底部 */
+}
+
+.imageContentFlex {
+  width: 100%;
+  height: 100%; /* 确保它在 flex 容器中尝试占据 100% 高度 */
+  flex-grow: 1; /* 关键：让这个元素占据所有剩余的垂直空间 */
+
+  background-repeat: repeat-x; /* 横向重复 */
+  background-size: auto 100%; /* 宽度自动，高度填充自身容器 */
+  background-position: left bottom; /* 将背景图片定位到底部 */
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+/* 默认内容样式 */
+.defaultContent {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c8c8c;
+  box-sizing: border-box;
+}
