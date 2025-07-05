@@ -123,7 +123,7 @@ const TimelinePanel: React.FC<TimelineProps> = ({
             id: segment.id,
             start: start,
             end: end,
-            effectId: material.type, // 将track.type改为material.type
+            effectId: material.type === 'extract_music' ? 'audio' : material.type, // 当material.type为extract_music时，使用audio类型
             flexible: false,
             duration: segment.target_timerange.duration,
             remote_url: remoteUrl,
