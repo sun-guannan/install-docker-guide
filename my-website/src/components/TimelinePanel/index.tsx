@@ -49,8 +49,45 @@ const TimelinePanel: React.FC<TimelineProps> = ({
       const actions: TimelineAction[] = track.segments
         .map(segment => {
           // 确保 segment 有 target_timerange
+          // debugger;
           if (!segment.target_timerange) {
             return null;
+          }
+
+          // 特殊处理effect和sticker类型，这些类型没有对应的material
+          if (track.type === 'effect' || track.type === 'sticker') {
+            const start = segment.target_timerange.start / 1000000; // 微秒转秒
+            const duration = segment.target_timerange.duration / 1000000;
+            const end = start + duration;
+            
+            // 核心：根据 selectedItem.id 判断是否应该选中
+            const isSelected = selectedItem && selectedItem.id === segment.id;
+
+            let materialName = `${track.type} ${segment.id.substring(0, 8)}`;
+            let remoteUrl = '';
+
+            // 对于effect类型，尝试从video_effects中获取名称
+            if (track.type === 'effect' && scriptStatus.materials.video_effects) {
+              const effectMaterial = scriptStatus.materials.video_effects.find(m => m.id === segment.material_id);
+              debugger;
+              if (effectMaterial) {
+                materialName = effectMaterial.name || effectMaterial.material_name || materialName;
+                remoteUrl = effectMaterial.name || '';
+              }
+            }
+
+            return {
+              id: segment.id,
+              start: start,
+              end: end,
+              effectId: track.type, // 使用track.type作为effectId
+              flexible: false,
+              duration: segment.target_timerange.duration,
+              remote_url: remoteUrl,
+              meterial_name: materialName,
+              selected: isSelected,
+              keyframes: [], // 空关键帧数组
+            };
           }
 
           // 在 materials 中找到对应的素材

@@ -165,6 +165,34 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({ selectedItem }) => {
     }
 
     // 特效素材详情
+    if (selectedItem.type === 'effect') {
+      const content:string = selectedItem.remote_url;
+      items.push(
+        {
+          key: 'effect_name',
+          label: '特效名称',
+          children: content
+        },
+        {
+          key: 'effect_start_time',
+          label: '开始时间',
+          children: formatDuration(selectedItem.start * 1_000_000),
+        },
+        {
+          key: 'effect_end_time',
+          label: '结束时间',
+          children: formatDuration(selectedItem.end * 1_000_000),
+        },
+        {
+          key: 'effect_duration',
+          label: '持续时长',
+          children: formatDuration(selectedItem.duration),
+        }
+      );
+    }
+
+
+    // 特效素材详情
     if (selectedItem.type === 'material_animation' && 
         selectedItem.resolvedMaterial.animations && 
         selectedItem.resolvedMaterial.animations.length > 0) {
