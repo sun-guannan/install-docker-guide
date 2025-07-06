@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Layout from '@theme/Layout'; // Docusaurus 默认布局
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'; // Docusaurus 上下文
 import { useLocation } from '@docusaurus/router'; // Docusaurus 路由钩子
-import { Layout as AntdLayout, Row, Col, Typography, Divider } from 'antd'; // 引入 Ant Design 布局组件
+import { Layout as AntdLayout, Row, Col, Typography, Divider, Spin } from 'antd'; // 引入 Ant Design 布局组件和Spin
 // 导入所有子组件
 import PreviewPanel from '../../components/PreviewPanel';
 import TimelinePanel from '../../components/TimelinePanel';
@@ -66,6 +66,24 @@ const globalStyles = `
   .ant-border {
     border-color: #444 !important;
   }
+  /* 全局loading样式 */
+  .global-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .global-loading .ant-spin-text {
+    color: #FFFFFF;
+    margin-top: 8px;
+    font-size: 16px;
+  }
 `;
 
 function DownloaderPage(): JSX.Element {
@@ -76,10 +94,12 @@ function DownloaderPage(): JSX.Element {
 
   const [scriptStatus, setScriptStatus] = useState<any>(null);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false); // 添加loading状态 
 
   // 获取脚本状态
   useEffect(() => {
     const queryScriptStatus = async () => {
+      setLoading(true); // 开始请求前设置loading为true
       try {
         const response = await fetch(`${API_BASE_URL}/query_script`, {
           method: 'POST',
@@ -108,6 +128,8 @@ function DownloaderPage(): JSX.Element {
         }
       } catch (err) {
         console.error('Request for Script Status failed:', err);
+      } finally {
+        setLoading(false); // 请求结束后设置loading为false
       }
     };
 
@@ -126,6 +148,13 @@ function DownloaderPage(): JSX.Element {
     <Layout title="剪映草稿助手" description="一个用于编辑剪映草稿的工具" noFooter>
       {/* 注入全局样式 */}
       <style>{globalStyles}</style>
+
+      {/* 全局loading */}
+      {loading && (
+        <div className="global-loading">
+          <Spin size="large" tip="加载中..." />
+        </div>
+      )}
 
       <AntdLayout className={styles.mainLayout}> {/* 使用 Ant Design Layout 进行内部布局 */}
         {/* 头部区域 */}

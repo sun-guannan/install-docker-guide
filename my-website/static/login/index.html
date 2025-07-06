@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信网页应用登录示例</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        #login_container { margin: 30px auto; width: 300px; height: 300px; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; }
+        #userInfo { margin-top: 30px; border: 1px solid #eee; padding: 20px; max-width: 400px; margin-left: auto; margin-right: auto; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到微信网页应用登录示例</h1>
+    <p>请扫描二维码登录：</p>
+
+    <div id="login_container"></div>
+
+    <div id="userInfo" style="display: none;">
+        <h2>用户信息：</h2>
+        <p><strong>OpenID:</strong> <span id="openid"></span></p>
+        <p><strong>UnionID:</strong> <span id="unionid"></span></p>
+        <p><strong>昵称:</strong> <span id="nickname"></span></p>
+        <p><strong>头像:</strong> <img id="headimgurl" src="" alt="用户头像" style="width: 80px; height: 80px; border-radius: 50%;"></p>
+        <p><strong>性别:</strong> <span id="sex"></span></p>
+        <p><strong>城市:</strong> <span id="city"></span></p>
+        <p><strong>国家:</strong> <span id="country"></span></p>
+        <p><strong>省份:</strong> <span id="province"></span></p>
+    </div>
+
+    <script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+    <script>
+        const appid = 'wx70ede4f8117ab326'; // 替换成你微信开放平台网站应用的 AppID
+        // FC 函数的公网访问地址，这是微信授权成功后重定向的目标
+        const redirect_uri = encodeURIComponent('https://api.install-ai-guider.top/wechat_login_server');
+
+        // 创建微信扫码登录对象
+        var obj = new WxLogin({
+            self_redirect: false, // 不重定向，在当前页面渲染二维码
+            id: "login_container", // 显示二维码的 div 的 id
+            appid: appid, // 你的网站应用的 AppID
+            scope: "snsapi_login", // 网站应用固定作用域
+            redirect_uri: redirect_uri, // 微信授权成功后的回调地址，指向你的 FC 函数
+            state: Math.random().toString(36).substring(2), // 用于防止 CSRF 攻击，建议后端生成并校验
+            style: "", // 样式，可以不填
+            href: "" // 自定义样式，可以不填
+        });
+
+        // 检查URL中是否有用户信息（假设FC函数会把用户信息带回来）
+        const urlParams = new URLSearchParams(window.location.search);
+        const userData = urlParams.get('userData');
+
+        if (userData) {
+            try {
+                const user = JSON.parse(decodeURIComponent(userData));
+                document.getElementById('openid').textContent = user.openid || '未获取到';
+                document.getElementById('unionid').textContent = user.unionid || '未获取到';
+                document.getElementById('nickname').textContent = user.nickname || '未获取到';
+                document.getElementById('headimgurl').src = user.headimgurl || '';
+                document.getElementById('sex').textContent = user.sex === 1 ? '男' : (user.sex === 2 ? '女' : '未知');
+                document.getElementById('city').textContent = user.city || '未获取到';
+                document.getElementById('country').textContent = user.country || '未获取到';
+                document.getElementById('province').textContent = user.province || '未获取到';
+                document.getElementById('userInfo').style.display = 'block';
+                document.getElementById('login_container').style.display = 'none'; // 隐藏二维码容器
+                document.querySelector('p').style.display = 'none'; // 隐藏提示语
+            } catch (e) {
+                console.error("解析用户信息失败:", e);
+                alert("登录失败，请重试或检查配置。");
+            }
+        }
+    </script>
+</body>
+</html>
