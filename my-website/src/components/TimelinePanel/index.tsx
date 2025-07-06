@@ -45,7 +45,45 @@ const TimelinePanel: React.FC<TimelineProps> = ({
       return [];
     }
 
-    const tracksData: TimelineRow[] = scriptStatus.tracks.map(track => {
+    // 首先，创建一个tracks的副本，以便我们可以对其进行排序而不影响原始数据
+    const sortedTracks = [...scriptStatus.tracks];
+    
+    // 定义track类型的优先级顺序（数字越小优先级越高）
+    const trackTypePriority: { [key: string]: number } = {
+      'sticker': 0,
+      'effect': 1,
+      'text': 2,
+      'image': 3,
+      'video': 4,
+      'audio': 5
+    };
+    
+    // 对tracks进行排序
+    sortedTracks.sort((a, b) => {
+      // 1. 首先按照segments[0].render_index排序（越大越靠前）
+      const renderIndexA = a.segments[0]?.render_index || 0;
+      const renderIndexB = b.segments[0]?.render_index || 0;
+      
+      if (renderIndexA !== renderIndexB) {
+        return renderIndexB - renderIndexA; // 注意这里是降序排列（大的在前）
+      }
+      
+      // 2. 如果render_index相同，按照track类型排序
+      const typePriorityA = trackTypePriority[a.type] !== undefined ? trackTypePriority[a.type] : 999;
+      const typePriorityB = trackTypePriority[b.type] !== undefined ? trackTypePriority[b.type] : 999;
+      
+      if (typePriorityA !== typePriorityB) {
+        return typePriorityA - typePriorityB;
+      }
+      
+      // 3. 如果render_index和类型都相同，按照原始顺序的逆序排列
+      const originalIndexA = scriptStatus.tracks.findIndex(track => track.id === a.id);
+      const originalIndexB = scriptStatus.tracks.findIndex(track => track.id === b.id);
+      
+      return originalIndexB - originalIndexA; // 逆序排列
+    });
+
+    const tracksData: TimelineRow[] = sortedTracks.map(track => {
       const actions: TimelineAction[] = track.segments
         .map(segment => {
           // 确保 segment 有 target_timerange
@@ -53,6 +91,10 @@ const TimelinePanel: React.FC<TimelineProps> = ({
           if (!segment.target_timerange) {
             return null;
           }
+          console.log('track.type')
+          console.log(track.type)
+          console.log('track.segments.renderIndex')
+          console.log(track.segments[0].render_index)
 
           // 特殊处理effect和sticker类型，这些类型没有对应的material
           if (track.type === 'effect' || track.type === 'sticker') {
